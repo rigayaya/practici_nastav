@@ -89,6 +89,14 @@ body{font-family:'Inter',system-ui,sans-serif;background:#f8f8fc;color:#1a1a2e;m
 .example-block a{font-size:.82rem;color:#7c3aed;font-weight:600;text-decoration:none}
 .example-block a:hover{text-decoration:underline}
 
+/* Copy prompt button */
+.copy-btn{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.2);border-radius:6px;color:#7c3aed;font-size:.68rem;font-weight:600;cursor:pointer;transition:all .15s;margin-top:4px;user-select:none}
+.copy-btn:hover{background:rgba(124,58,237,.15);border-color:rgba(124,58,237,.4)}
+.copy-btn.copied{background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.3);color:#059669}
+/* Step highlight animation */
+@keyframes stepHL{0%{background:rgba(124,58,237,.12);border-color:rgba(124,58,237,.5)}100%{background:#f9fafb;border-color:#e5e7eb}}
+.step-highlight{animation:stepHL 2s ease forwards}
+
 /* Steps */
 .steps-block{margin-bottom:14px}
 .steps-block>h4{font-size:.65rem;text-transform:uppercase;letter-spacing:1.2px;color:#9ca3af;font-weight:700;margin-bottom:12px;padding:0 2px}
@@ -181,7 +189,7 @@ a.ot{background:rgba(22,163,74,.06);color:#16a34a;border:1px solid rgba(22,163,7
         <h2>Неделя 0 — Знакомство с Figma</h2>
     </div>
 
-    <div class="practice open" data-id="p0">
+    <div class="practice" data-id="p0">
         <div class="practice-head" onclick="toggleP(this.parentElement)">
             <div class="practice-num" style="background:rgba(139,92,246,.08);color:#7c3aed;border-color:rgba(139,92,246,.2)">П 0</div>
             <div class="practice-info">
@@ -540,8 +548,10 @@ a.ot{background:rgba(22,163,74,.06);color:#16a34a;border:1px solid rgba(22,163,7
                             <div class="help-content">
                                 <p><b>Шаг 1 — Подогнать структуру под нишу.</b> У тебя уже есть структура лендинга из предыдущего шага. Закинь её в ChatGPT и попроси адаптировать под твою нишу:</p>
                                 <code>Вот структура моего лендинга: [ВСТАВЬ СПИСОК БЛОКОВ]. Моя ниша — «[ТВОЯ НИША]». Адаптируй эту структуру под данную нишу: убери лишние блоки, добавь специфичные для ниши, переименуй разделы так, чтобы они звучали органично для этой сферы. Выведи итоговый список блоков в том же формате.</code>
+                                <button class="copy-btn" onclick="copyPrompt(this)">&#128203; Скопировать промпт</button>
                                 <p><b>Шаг 2 — Сгенерировать текст.</b> Когда структура готова, в том же чате попроси написать текст для каждого блока:</p>
                                 <code>Теперь напиши продающий текст для каждого блока этого лендинга. Стиль: лаконичный, без воды, с конкретными выгодами для клиента. Для первого экрана — заголовок и подзаголовок. Для остальных блоков — заголовок и короткий текст.</code>
+                                <button class="copy-btn" onclick="copyPrompt(this)">&#128203; Скопировать промпт</button>
                             </div>
                         </div>
                     </div>
@@ -944,8 +954,20 @@ a.ot{background:rgba(22,163,74,.06);color:#16a34a;border:1px solid rgba(22,163,7
 </div>
 
 <script>
+history.scrollRestoration = 'manual';
+window.scrollTo(0, 0);
+
 function toggleP(el){
     el.classList.toggle('open');
+}
+
+function copyPrompt(btn) {
+    const code = btn.previousElementSibling;
+    navigator.clipboard.writeText(code.textContent).then(() => {
+        btn.classList.add('copied');
+        btn.textContent = '✓ Скопировано';
+        setTimeout(() => { btn.classList.remove('copied'); btn.innerHTML = '&#128203; Скопировать промпт'; }, 2000);
+    });
 }
 // Tooltip for ? buttons
 const tip = document.getElementById('tip');
@@ -1103,12 +1125,22 @@ function goToStep() {
     if (!nextStepData) return;
     closeModal();
     setTimeout(() => {
-        const el = document.querySelector(nextStepData.practice.anchor);
-        if (el) {
-            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            const card = el.querySelector('.practice');
-            if (card && !card.classList.contains('open')) card.classList.add('open');
-        }
+        const { practice, stepIdx } = nextStepData;
+        const section = document.querySelector(practice.anchor);
+        if (!section) return;
+        const card = section.querySelector('.practice');
+        if (card && !card.classList.contains('open')) card.classList.add('open');
+        setTimeout(() => {
+            const steps = section.querySelectorAll('.steps-block .step-item');
+            const step = steps[stepIdx];
+            if (step) {
+                step.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                step.classList.remove('step-highlight');
+                void step.offsetWidth;
+                step.classList.add('step-highlight');
+                step.addEventListener('animationend', () => step.classList.remove('step-highlight'), { once: true });
+            }
+        }, 250);
     }, 150);
 }
 </script>
