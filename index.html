@@ -23,19 +23,9 @@ body{font-family:'Inter',system-ui,sans-serif;background:#f8f8fc;color:#1a1a2e;m
 /* Container */
 .container{max-width:960px;margin:0 auto;padding:0 20px 80px}
 
-/* Project banner */
-.project-banner{max-width:960px;margin:32px auto 0;padding:0 20px}
-.project-banner-inner{background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:16px;padding:28px 32px;color:#fff;position:relative;overflow:hidden}
-.project-banner-inner::after{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:rgba(124,58,237,.15);border-radius:50%;pointer-events:none}
-.project-banner h2{font-size:1.15rem;font-weight:900;letter-spacing:-.02em;margin-bottom:6px}
-.project-banner .pb-sub{font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.5;max-width:600px}
-.progress-steps{display:flex;align-items:center;gap:0;margin-top:20px}
-.ps-item{display:flex;align-items:center;gap:8px;font-size:.68rem;font-weight:700;color:rgba(255,255,255,.5)}
-.ps-item.done{color:rgba(255,255,255,.9)}
-.ps-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:800;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.15)}
-.ps-item.done .ps-dot{background:rgba(124,58,237,.4);border-color:rgba(124,58,237,.6)}
-.ps-line{width:24px;height:2px;background:rgba(255,255,255,.1);margin:0 4px}
-.ps-item.done+.ps-line{background:rgba(124,58,237,.4)}
+/* Practice connector */
+.practice-connector{display:flex;justify-content:center;margin:4px 0}
+.practice-connector-line{border-left:2px dashed #d1d5db;height:36px}
 
 /* Week section */
 .week-section{margin-top:40px}
@@ -238,28 +228,17 @@ a.ot{background:rgba(22,163,74,.06);color:#16a34a;border:1px solid rgba(22,163,7
 </div>
 
 <!-- ==================== ПРОЕКТ 1: КОММЕРЧЕСКИЙ ЛЕНДИНГ ==================== -->
-<div class="project-banner">
-    <div class="project-banner-inner">
+<div class="week-section" style="margin-top:32px">
+    <div class="week-header" style="border-bottom-color:#ea580c">
+        <div class="week-dot" style="background:#ea580c"></div>
         <h2>Проект 1 — Коммерческий лендинг</h2>
-        <div class="pb-sub">Все практики ниже — этапы создания одного коммерческого лендинга. От мудборда до опубликованного сайта на Тильде.</div>
-        <div class="progress-steps">
-            <div class="ps-item done"><div class="ps-dot">П1</div></div>
-            <div class="ps-line"></div>
-            <div class="ps-item"><div class="ps-dot">П2</div></div>
-            <div class="ps-line"></div>
-            <div class="ps-item"><div class="ps-dot">П3</div></div>
-            <div class="ps-line"></div>
-            <div class="ps-item"><div class="ps-dot">П4</div></div>
-            <div style="margin-left:12px;font-size:.68rem;font-weight:700;color:rgba(255,255,255,.45)">25% &rarr; 50% &rarr; 75% &rarr; 100%</div>
-        </div>
     </div>
 </div>
 
 <!-- ==================== ПРАКТИКА 1 (25%) ==================== -->
 <div class="week-section" id="w1">
-    <div class="week-header">
-        <div class="week-dot"></div>
-        <h2>Неделя 1 — Начало работы</h2>
+    <div class="week-header" style="border-bottom:none;padding-bottom:4px;margin-bottom:12px">
+        <h2 style="font-size:.75rem;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.07em">Неделя 1 — Начало работы</h2>
     </div>
 
     <div class="practice" data-id="p1">
@@ -444,11 +423,12 @@ a.ot{background:rgba(22,163,74,.06);color:#16a34a;border:1px solid rgba(22,163,7
     </div>
 </div>
 
+<div class="practice-connector"><div class="practice-connector-line"></div></div>
+
 <!-- ==================== ПРАКТИКА 2 (50%) ==================== -->
 <div class="week-section" id="w2">
-    <div class="week-header">
-        <div class="week-dot"></div>
-        <h2>Неделя 2 — Дизайн всего лендинга</h2>
+    <div class="week-header" style="border-bottom:none;padding-bottom:4px;margin-bottom:12px">
+        <h2 style="font-size:.75rem;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.07em">Неделя 2 — Дизайн всего лендинга</h2>
     </div>
 
     <div class="practice" data-id="p2">
@@ -605,11 +585,12 @@ a.ot{background:rgba(22,163,74,.06);color:#16a34a;border:1px solid rgba(22,163,7
     </div>
 </div>
 
+<div class="practice-connector"><div class="practice-connector-line"></div></div>
+
 <!-- ==================== ПРАКТИКА 3 (75%) ==================== -->
 <div class="week-section" id="w3">
-    <div class="week-header">
-        <div class="week-dot"></div>
-        <h2>Неделя 3 — Адаптив</h2>
+    <div class="week-header" style="border-bottom:none;padding-bottom:4px;margin-bottom:12px">
+        <h2 style="font-size:.75rem;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.07em">Неделя 3 — Адаптив</h2>
     </div>
 
     <div class="practice" data-id="p3">
@@ -719,11 +700,12 @@ a.ot{background:rgba(22,163,74,.06);color:#16a34a;border:1px solid rgba(22,163,7
     </div>
 </div>
 
+<div class="practice-connector"><div class="practice-connector-line"></div></div>
+
 <!-- ==================== ПРАКТИКА 4 (100%) ==================== -->
 <div class="week-section" id="w4">
-    <div class="week-header">
-        <div class="week-dot"></div>
-        <h2>Неделя 4 — Вёрстка на Тильде</h2>
+    <div class="week-header" style="border-bottom:none;padding-bottom:4px;margin-bottom:12px">
+        <h2 style="font-size:.75rem;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.07em">Неделя 4 — Вёрстка на Тильде</h2>
     </div>
 
     <div class="practice" data-id="p4">
