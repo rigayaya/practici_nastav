@@ -932,7 +932,7 @@ function toggleP(el){
 }
 function toggleHelp(btn){
     event.stopPropagation();
-    const content = btn.closest('.step-main').querySelector('.help-content');
+    const content = btn.closest('.step-main, .step-text, li').querySelector('.help-content');
     if(content) content.classList.toggle('open');
 }
 
