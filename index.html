@@ -23,9 +23,27 @@ body{font-family:'Inter',system-ui,sans-serif;background:#f8f8fc;color:#1a1a2e;m
 /* Container */
 .container{max-width:960px;margin:0 auto;padding:0 20px 80px}
 
-/* Practice connector */
-.practice-connector{display:flex;justify-content:center;margin:4px 0}
-.practice-connector-line{border-left:2px dashed #d1d5db;height:36px}
+/* Modal */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal-card{background:#fff;border-radius:20px;padding:32px;max-width:480px;width:100%;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.2);max-height:90vh;overflow-y:auto}
+.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;font-size:1.1rem;color:#9ca3af;cursor:pointer;padding:4px 8px;line-height:1}
+.modal-close:hover{color:#374151}
+.modal-back{background:none;border:none;color:#9ca3af;font-size:.75rem;font-weight:600;cursor:pointer;padding:0;margin-bottom:16px;display:block}
+.modal-back:hover{color:#374151}
+.modal-title{font-size:1.1rem;font-weight:900;color:#1a1a2e;margin-bottom:6px}
+.modal-subtitle{font-size:.82rem;color:#6b7280;margin-bottom:20px;font-weight:600}
+.modal-options{display:flex;flex-direction:column;gap:8px}
+.mo-btn{padding:12px 16px;border-radius:10px;border:1.5px solid #e5e7eb;background:#fff;color:#374151;font-size:.84rem;font-weight:600;cursor:pointer;text-align:left;transition:all .15s;font-family:inherit}
+.mo-btn:hover{border-color:#ea580c;background:rgba(234,88,12,.04);color:#ea580c}
+.mo-btn-start{background:#f9fafb}
+.modal-result{padding:16px 20px;background:rgba(234,88,12,.06);border:1.5px solid rgba(234,88,12,.2);border-radius:12px;margin-bottom:20px}
+.mr-label{font-size:.62rem;text-transform:uppercase;letter-spacing:1.5px;color:#ea580c;font-weight:700;margin-bottom:6px}
+.mr-step{font-size:.95rem;font-weight:800;color:#1a1a2e;line-height:1.4}
+.mr-practice{font-size:.75rem;color:#6b7280;margin-top:4px}
+.mo-btn-go{width:100%;padding:14px;border-radius:10px;border:none;background:#ea580c;color:#fff;font-size:.88rem;font-weight:700;cursor:pointer;transition:background .15s;font-family:inherit}
+.mo-btn-go:hover{background:#c2410c}
+.qn-now{background:rgba(234,88,12,.08)!important;border-color:rgba(234,88,12,.3)!important;color:#ea580c!important;cursor:pointer}
 
 /* Week section */
 .week-section{margin-top:40px}
@@ -141,10 +159,7 @@ a.ot{background:rgba(22,163,74,.06);color:#16a34a;border:1px solid rgba(22,163,7
 <!-- Quick navigation -->
 <div class="quick-nav">
     <a href="#w0" class="qn-btn active">Неделя 0</a>
-    <a href="#w1" class="qn-btn">Практика 1</a>
-    <a href="#w2" class="qn-btn">Практика 2</a>
-    <a href="#w3" class="qn-btn">Практика 3</a>
-    <a href="#w4" class="qn-btn">Практика 4</a>
+    <button class="qn-btn qn-now" onclick="openModal()">★ Что мне делать сейчас?</button>
 </div>
 
 <div class="container">
@@ -236,7 +251,7 @@ a.ot{background:rgba(22,163,74,.06);color:#16a34a;border:1px solid rgba(22,163,7
 </div>
 
 <!-- ==================== ПРАКТИКА 1 (25%) ==================== -->
-<div class="week-section" id="w1">
+<div class="week-section" id="w1" style="margin-top:12px">
     <div class="week-header" style="border-bottom:none;padding-bottom:4px;margin-bottom:12px">
         <h2 style="font-size:.75rem;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.07em">Неделя 1 — Начало работы</h2>
     </div>
@@ -423,10 +438,8 @@ a.ot{background:rgba(22,163,74,.06);color:#16a34a;border:1px solid rgba(22,163,7
     </div>
 </div>
 
-<div class="practice-connector"><div class="practice-connector-line"></div></div>
-
 <!-- ==================== ПРАКТИКА 2 (50%) ==================== -->
-<div class="week-section" id="w2">
+<div class="week-section" id="w2" style="margin-top:12px">
     <div class="week-header" style="border-bottom:none;padding-bottom:4px;margin-bottom:12px">
         <h2 style="font-size:.75rem;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.07em">Неделя 2 — Дизайн всего лендинга</h2>
     </div>
@@ -585,10 +598,8 @@ a.ot{background:rgba(22,163,74,.06);color:#16a34a;border:1px solid rgba(22,163,7
     </div>
 </div>
 
-<div class="practice-connector"><div class="practice-connector-line"></div></div>
-
 <!-- ==================== ПРАКТИКА 3 (75%) ==================== -->
-<div class="week-section" id="w3">
+<div class="week-section" id="w3" style="margin-top:12px">
     <div class="week-header" style="border-bottom:none;padding-bottom:4px;margin-bottom:12px">
         <h2 style="font-size:.75rem;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.07em">Неделя 3 — Адаптив</h2>
     </div>
@@ -700,10 +711,8 @@ a.ot{background:rgba(22,163,74,.06);color:#16a34a;border:1px solid rgba(22,163,7
     </div>
 </div>
 
-<div class="practice-connector"><div class="practice-connector-line"></div></div>
-
 <!-- ==================== ПРАКТИКА 4 (100%) ==================== -->
-<div class="week-section" id="w4">
+<div class="week-section" id="w4" style="margin-top:12px">
     <div class="week-header" style="border-bottom:none;padding-bottom:4px;margin-bottom:12px">
         <h2 style="font-size:.75rem;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.07em">Неделя 4 — Вёрстка на Тильде</h2>
     </div>
@@ -862,6 +871,38 @@ a.ot{background:rgba(22,163,74,.06);color:#16a34a;border:1px solid rgba(22,163,7
 
 </div><!-- /container -->
 
+<!-- Modal -->
+<div id="modal-overlay" class="modal-overlay" onclick="closeModalOutside(event)">
+    <div class="modal-card">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+
+        <div id="modal-stage-1">
+            <div class="modal-title">Где ты сейчас?</div>
+            <div class="modal-subtitle">Выбери практику, над которой работаешь</div>
+            <div class="modal-options">
+                <button class="mo-btn mo-btn-start" onclick="selectPractice(-1)">Ещё не начинал(а) — покажи с чего начать</button>
+                <button class="mo-btn" onclick="selectPractice(0)">Практика 1 — Начало работы</button>
+                <button class="mo-btn" onclick="selectPractice(1)">Практика 2 — Дизайн лендинга</button>
+                <button class="mo-btn" onclick="selectPractice(2)">Практика 3 — Адаптив</button>
+                <button class="mo-btn" onclick="selectPractice(3)">Практика 4 — Вёрстка на Тильде</button>
+            </div>
+        </div>
+
+        <div id="modal-stage-2" style="display:none">
+            <button class="modal-back" onclick="backToStage1()">← Назад</button>
+            <div class="modal-title">Что уже сделал(а)?</div>
+            <div class="modal-subtitle" id="stage2-subtitle"></div>
+            <div class="modal-options" id="stage2-options"></div>
+        </div>
+
+        <div id="modal-stage-3" style="display:none">
+            <div class="modal-title">Твой следующий шаг</div>
+            <div id="stage3-result" class="modal-result"></div>
+            <button class="mo-btn-go" onclick="goToStep()">Перейти к шагу →</button>
+        </div>
+    </div>
+</div>
+
 <script>
 function toggleP(el){
     el.classList.toggle('open');
@@ -874,7 +915,7 @@ function toggleHelp(btn){
 
 // Highlight active nav on scroll
 const sections = document.querySelectorAll('.week-section[id]');
-const navBtns = document.querySelectorAll('.qn-btn');
+const navBtns = document.querySelectorAll('.qn-btn[href]');
 window.addEventListener('scroll', ()=>{
     let current = '';
     sections.forEach(s=>{
@@ -885,6 +926,129 @@ window.addEventListener('scroll', ()=>{
         if(b.getAttribute('href') === '#'+current) b.classList.add('active');
     });
 });
+
+// Modal logic
+const PRACTICES = [
+    {
+        label: 'Практика 1 — Начало работы', anchor: '#w1',
+        steps: [
+            'Выбери нишу для лендинга',
+            'Собери 2-3 мудборда',
+            'Собери референсы (5-10 штук)',
+            'Разработай 2-3 концепции первого экрана'
+        ]
+    },
+    {
+        label: 'Практика 2 — Дизайн лендинга', anchor: '#w2',
+        steps: [
+            'Определи структуру лендинга',
+            'Подготовь текст для сайта',
+            'Подготовь референсы для каждого экрана',
+            'Разработай дизайн всего лендинга'
+        ]
+    },
+    {
+        label: 'Практика 3 — Адаптив', anchor: '#w3',
+        steps: [
+            'Изучи принципы адаптивного дизайна',
+            'Сделай 4 адаптивных версии лендинга'
+        ]
+    },
+    {
+        label: 'Практика 4 — Вёрстка', anchor: '#w4',
+        steps: [
+            'Перенеси макет на Тильду',
+            'Добавь анимации',
+            'Настрой сайт и опубликуй'
+        ]
+    }
+];
+let selectedPracticeIdx = -1;
+let nextStepData = null;
+
+function openModal() {
+    document.getElementById('modal-overlay').classList.add('open');
+    showStage(1);
+}
+function closeModal() {
+    document.getElementById('modal-overlay').classList.remove('open');
+}
+function closeModalOutside(e) {
+    if (e.target === document.getElementById('modal-overlay')) closeModal();
+}
+function showStage(n) {
+    ['modal-stage-1','modal-stage-2','modal-stage-3'].forEach((id, i) => {
+        document.getElementById(id).style.display = (i+1 === n) ? '' : 'none';
+    });
+}
+function backToStage1() { showStage(1); }
+
+function selectPractice(idx) {
+    if (idx === -1) {
+        nextStepData = { practice: PRACTICES[0], stepIdx: 0 };
+        showResult();
+        return;
+    }
+    selectedPracticeIdx = idx;
+    const p = PRACTICES[idx];
+    document.getElementById('stage2-subtitle').textContent = p.label;
+    const opts = document.getElementById('stage2-options');
+    opts.innerHTML = '';
+    const btn0 = document.createElement('button');
+    btn0.className = 'mo-btn mo-btn-start';
+    btn0.textContent = 'Ещё ничего не делал(а) в этой практике';
+    btn0.onclick = () => selectStep(-1);
+    opts.appendChild(btn0);
+    p.steps.forEach((step, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'mo-btn';
+        btn.textContent = '✓  Шаг ' + (i+1) + ': ' + step;
+        btn.onclick = () => selectStep(i);
+        opts.appendChild(btn);
+    });
+    showStage(2);
+}
+
+function selectStep(completedIdx) {
+    const p = PRACTICES[selectedPracticeIdx];
+    if (completedIdx === -1) {
+        nextStepData = { practice: p, stepIdx: 0 };
+    } else if (completedIdx >= p.steps.length - 1) {
+        nextStepData = selectedPracticeIdx < PRACTICES.length - 1
+            ? { practice: PRACTICES[selectedPracticeIdx + 1], stepIdx: 0 }
+            : null;
+    } else {
+        nextStepData = { practice: p, stepIdx: completedIdx + 1 };
+    }
+    showResult();
+}
+
+function showResult() {
+    const el = document.getElementById('stage3-result');
+    const goBtn = document.querySelector('.mo-btn-go');
+    if (!nextStepData) {
+        el.innerHTML = '<div class="mr-label">Статус</div><div class="mr-step">Ты завершил(а) весь проект!</div><div class="mr-practice">Все практики выполнены — у тебя есть кейс для портфолио</div>';
+        goBtn.style.display = 'none';
+    } else {
+        const { practice, stepIdx } = nextStepData;
+        el.innerHTML = '<div class="mr-label">Следующий шаг</div><div class="mr-step">Шаг ' + (stepIdx+1) + ': ' + practice.steps[stepIdx] + '</div><div class="mr-practice">' + practice.label + '</div>';
+        goBtn.style.display = '';
+    }
+    showStage(3);
+}
+
+function goToStep() {
+    if (!nextStepData) return;
+    closeModal();
+    setTimeout(() => {
+        const el = document.querySelector(nextStepData.practice.anchor);
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const card = el.querySelector('.practice');
+            if (card && !card.classList.contains('open')) card.classList.add('open');
+        }
+    }, 150);
+}
 </script>
 </body>
 </html>
