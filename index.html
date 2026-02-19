@@ -8,66 +8,103 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',system-ui,sans-serif;background:#f8f8fc;color:#1a1a2e;min-height:100vh;-webkit-font-smoothing:antialiased}
+
+/* Header */
 .hero{text-align:center;padding:48px 20px 10px}
 .hero h1{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:900;letter-spacing:-.03em;background:linear-gradient(135deg,#7c3aed,#db2777);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero p{color:#6b7280;font-size:.88rem;margin-top:6px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.5}
+
+/* Quick nav */
 .quick-nav{max-width:960px;margin:20px auto 0;padding:0 20px;display:flex;gap:6px;flex-wrap:wrap}
 .qn-btn{padding:8px 16px;border-radius:8px;background:#fff;border:1.5px solid #e5e7eb;color:#6b7280;font-size:.72rem;font-weight:700;cursor:pointer;transition:all .2s;text-decoration:none}
 .qn-btn:hover{border-color:#c4b5fd;background:#faf5ff;color:#4b5563}
 .qn-btn.active{border-color:#7c3aed;background:rgba(124,58,237,.06);color:#7c3aed}
+
+/* Container */
 .container{max-width:960px;margin:0 auto;padding:0 20px 80px}
+
+/* Project banner */
+.project-banner{max-width:960px;margin:32px auto 0;padding:0 20px}
+.project-banner-inner{background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:16px;padding:28px 32px;color:#fff;position:relative;overflow:hidden}
+.project-banner-inner::after{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:rgba(124,58,237,.15);border-radius:50%;pointer-events:none}
+.project-banner h2{font-size:1.15rem;font-weight:900;letter-spacing:-.02em;margin-bottom:6px}
+.project-banner .pb-sub{font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.5;max-width:600px}
+.progress-steps{display:flex;align-items:center;gap:0;margin-top:20px}
+.ps-item{display:flex;align-items:center;gap:8px;font-size:.68rem;font-weight:700;color:rgba(255,255,255,.5)}
+.ps-item.done{color:rgba(255,255,255,.9)}
+.ps-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:800;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.15)}
+.ps-item.done .ps-dot{background:rgba(124,58,237,.4);border-color:rgba(124,58,237,.6)}
+.ps-line{width:24px;height:2px;background:rgba(255,255,255,.1);margin:0 4px}
+.ps-item.done+.ps-line{background:rgba(124,58,237,.4)}
+
+/* Week section */
 .week-section{margin-top:40px}
 .week-header{display:flex;align-items:center;gap:14px;padding-bottom:14px;border-bottom:1px solid #e5e7eb;margin-bottom:20px}
 .week-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;background:#ea580c}
 .week-header h2{font-size:1.1rem;font-weight:800;letter-spacing:-.02em;color:#1a1a2e}
 .week-header .week-dates{font-size:.72rem;color:#9ca3af;margin-left:auto;font-weight:600}
+
+/* Practice card */
 .practice{margin-bottom:28px;border-radius:16px;border:1px solid #e5e7eb;overflow:hidden;background:#fff;transition:border-color .2s;box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .practice:hover{border-color:#c4b5fd}
+
 .practice-head{padding:20px 24px;cursor:pointer;display:flex;align-items:flex-start;gap:16px}
 .practice-num{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.8rem;flex-shrink:0;background:rgba(234,88,12,.08);color:#ea580c;border:1.5px solid rgba(234,88,12,.2)}
 .practice-info{flex:1;min-width:0}
-.practice-info .p-label{font-size:.62rem;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;color:#ea580c;margin-bottom:3px}
+.practice-info .p-label{font-size:.62rem;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;color:#ea580c;margin-bottom:3px;display:flex;align-items:center;gap:8px}
 .practice-info h3{font-size:1rem;font-weight:800;line-height:1.35;color:#1a1a2e}
 .practice-desc{font-size:.82rem;color:#6b7280;margin-top:6px;line-height:1.6}
 .p-arrow{color:#9ca3af;font-size:.75rem;transition:transform .3s;flex-shrink:0;margin-top:4px}
 .practice.open .p-arrow{transform:rotate(180deg)}
+
+/* Percent badge */
+.pct-badge{display:inline-block;font-size:.58rem;font-weight:800;padding:2px 8px;border-radius:100px;background:rgba(124,58,237,.08);color:#7c3aed;border:1px solid rgba(124,58,237,.18)}
+
+/* Time badges */
+.time-summary{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.time-tag{font-size:.65rem;font-weight:600;padding:3px 10px;border-radius:100px;background:#f3f4f6;color:#6b7280;border:1px solid #e5e7eb}
+
 .practice-body{display:none;padding:0 24px 24px}
 .practice.open .practice-body{display:block;animation:fadeIn .25s ease}
 @keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+
+/* Result block */
 .result-block{padding:14px 18px;background:rgba(22,163,74,.04);border:1px solid rgba(22,163,74,.18);border-radius:10px;margin-bottom:16px}
 .result-block h4{font-size:.65rem;text-transform:uppercase;letter-spacing:1.2px;color:#16a34a;font-weight:700;margin-bottom:5px}
 .result-block p{font-size:.82rem;color:#4b5563;line-height:1.6}
 .result-block b{color:#1f2937;font-weight:600}
-.task-desc{padding:14px 18px;background:#f3f4f6;border:1px solid #e5e7eb;border-radius:10px;margin-bottom:16px;font-size:.84rem;color:#4b5563;line-height:1.7}
-.task-desc b{color:#1f2937;font-weight:600}
-.task-desc ul{padding-left:18px;margin-top:8px}
-.task-desc li{margin-bottom:6px}
-.task-desc .warn{color:#b45309;font-size:.78rem;margin-top:10px;padding:8px 12px;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-radius:8px}
-.materials{margin-top:4px}
-.mat-group{margin-bottom:14px}
-.mat-group-title{font-size:.65rem;text-transform:uppercase;letter-spacing:1.2px;color:#9ca3af;font-weight:700;margin-bottom:8px;padding:0 2px}
-.mat-item{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;margin-bottom:6px}
+
+/* Steps */
+.steps-block{margin-bottom:14px}
+.steps-block>h4{font-size:.65rem;text-transform:uppercase;letter-spacing:1.2px;color:#9ca3af;font-weight:700;margin-bottom:12px;padding:0 2px}
+.step-item{padding:16px 18px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:12px;margin-bottom:10px}
+.step-top{display:flex;align-items:flex-start;gap:10px}
+.step-num{width:26px;height:26px;border-radius:50%;border:1.5px solid #d1d5db;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:#6b7280;flex-shrink:0;margin-top:1px}
+.step-main{flex:1;min-width:0}
+.step-text{font-size:.84rem;color:#374151;line-height:1.6}
+.step-text b{color:#1f2937;font-weight:700}
+.step-time{font-size:.65rem;color:#9ca3af;font-weight:600;margin-top:4px}
+.step-note{font-size:.78rem;color:#6b7280;margin-top:6px;line-height:1.6}
+
+/* Resources inside step */
+.step-resources{margin-top:10px;display:flex;flex-direction:column;gap:6px}
+.step-res{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:#fff;border:1px solid #e5e7eb;border-radius:8px}
 .mat-icon{font-size:.75rem;flex-shrink:0;width:22px;height:22px;display:flex;align-items:center;justify-content:center;border-radius:6px;margin-top:1px}
 .mat-icon.video{background:rgba(220,38,38,.08);color:#dc2626}
 .mat-icon.figma{background:rgba(124,58,237,.08);color:#7c3aed}
 .mat-icon.link{background:rgba(22,163,74,.08);color:#16a34a}
 .mat-icon.info{background:rgba(245,158,11,.08);color:#d97706}
 .mat-body{flex:1;min-width:0}
-.mat-body .mat-title{font-size:.82rem;color:#374151;font-weight:600;line-height:1.4}
-.mat-body .mat-note{font-size:.72rem;color:#9ca3af;margin-top:2px;line-height:1.4}
-.mat-links{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
+.mat-body .mat-title{font-size:.78rem;color:#374151;font-weight:600;line-height:1.4}
+.mat-body .mat-note{font-size:.68rem;color:#9ca3af;margin-top:2px;line-height:1.4}
+.mat-links{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px}
 .mat-links a{padding:3px 10px;border-radius:100px;font-size:.63rem;font-weight:600;text-decoration:none;transition:all .15s;white-space:nowrap}
 a.yt{background:rgba(220,38,38,.06);color:#dc2626;border:1px solid rgba(220,38,38,.18)}a.yt:hover{background:rgba(220,38,38,.12)}
 a.vk{background:rgba(37,99,235,.06);color:#2563eb;border:1px solid rgba(37,99,235,.18)}a.vk:hover{background:rgba(37,99,235,.12)}
 a.fg{background:rgba(124,58,237,.06);color:#7c3aed;border:1px solid rgba(124,58,237,.18)}a.fg:hover{background:rgba(124,58,237,.12)}
 a.ot{background:rgba(22,163,74,.06);color:#16a34a;border:1px solid rgba(22,163,74,.18)}a.ot:hover{background:rgba(22,163,74,.12)}
-.steps-block{padding:14px 18px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;margin-bottom:14px}
-.steps-block h4{font-size:.65rem;text-transform:uppercase;letter-spacing:1.2px;color:#9ca3af;font-weight:700;margin-bottom:12px}
-.step-item{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #f3f4f6}
-.step-item:last-child{border-bottom:none;padding-bottom:2px}
-.step-num{width:24px;height:24px;border-radius:50%;border:1.5px solid #d1d5db;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:#6b7280;flex-shrink:0;margin-top:1px}
-.step-text{font-size:.82rem;color:#374151;line-height:1.6}
-.step-text b{color:#1f2937;font-weight:600}
+
+/* Help expand */
 .help-q{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:50%;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);color:#d97706;font-size:.55rem;font-weight:800;cursor:pointer;margin-left:4px;vertical-align:middle;transition:all .15s}
 .help-q:hover{background:rgba(245,158,11,.18);transform:scale(1.1)}
 .help-content{display:none;margin-top:8px;padding:12px 14px;background:rgba(245,158,11,.04);border:1px solid rgba(245,158,11,.15);border-radius:8px;font-size:.78rem;color:#4b5563;line-height:1.7}
@@ -76,19 +113,33 @@ a.ot{background:rgba(22,163,74,.06);color:#16a34a;border:1px solid rgba(22,163,7
 .help-content p{margin-bottom:6px}
 .help-content p:last-child{margin-bottom:0}
 .help-content code{background:#f3f4f6;padding:3px 8px;border-radius:5px;font-size:.73rem;display:block;margin:6px 0;white-space:pre-wrap;line-height:1.5;color:#374151}
-.bonus-label{display:inline-block;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:2px 7px;border-radius:4px;background:rgba(124,58,237,.06);color:#7c3aed;border:1px solid rgba(124,58,237,.15);margin-bottom:6px}
+
+/* Hint box (inline, always visible) */
+.hint-box{margin-top:8px;padding:10px 14px;background:rgba(124,58,237,.03);border:1px solid rgba(124,58,237,.12);border-radius:8px;font-size:.75rem;color:#4b5563;line-height:1.6}
+.hint-box b{color:#1f2937;font-weight:600}
+
+/* Warn box */
+.warn{color:#b45309;font-size:.78rem;margin-top:10px;padding:8px 12px;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-radius:8px}
+
+/* Upcoming */
 .upcoming{opacity:.45;pointer-events:none}
 .upcoming .practice-head{cursor:default}
+
+/* Responsive */
 @media(max-width:640px){
     .hero{padding:32px 16px 8px}
     .container{padding:0 12px 60px}
     .quick-nav{padding:0 12px}
     .practice-head{padding:16px 16px;gap:12px}
     .practice-body{padding:0 16px 16px}
-    .mat-links{flex-wrap:wrap}
+    .project-banner{padding:0 12px}
+    .project-banner-inner{padding:20px 18px}
+    .progress-steps{flex-wrap:wrap;gap:4px}
+    .ps-line{width:12px}
+    .step-item{padding:12px 14px}
+    .step-res{padding:8px 10px}
 }
 </style>
-
 </head>
 <body>
 
@@ -100,124 +151,84 @@ a.ot{background:rgba(22,163,74,.06);color:#16a34a;border:1px solid rgba(22,163,7
 <!-- Quick navigation -->
 <div class="quick-nav">
     <a href="#w0" class="qn-btn active">Неделя 0</a>
-    <a href="#w1" class="qn-btn">Неделя 1</a>
-    <a href="#w2" class="qn-btn">Неделя 2</a>
-    <a href="#w3" class="qn-btn">Неделя 3</a>
-    <a href="#w4" class="qn-btn">Неделя 4</a>
+    <a href="#w1" class="qn-btn">Практика 1</a>
+    <a href="#w2" class="qn-btn">Практика 2</a>
+    <a href="#w3" class="qn-btn">Практика 3</a>
+    <a href="#w4" class="qn-btn">Практика 4</a>
 </div>
 
 <div class="container">
 
-<!-- ==================== НЕДЕЛЯ 0 ==================== -->
+<!-- ==================== НЕДЕЛЯ 0 (отдельно от проекта) ==================== -->
 <div class="week-section" id="w0">
     <div class="week-header">
-        <div class="week-dot"></div>
+        <div class="week-dot" style="background:#8b5cf6"></div>
         <h2>Неделя 0 — Знакомство с Figma</h2>
     </div>
 
     <div class="practice open" data-id="p0">
         <div class="practice-head" onclick="toggleP(this.parentElement)">
-            <div class="practice-num">П 0</div>
+            <div class="practice-num" style="background:rgba(139,92,246,.08);color:#7c3aed;border-color:rgba(139,92,246,.2)">П 0</div>
             <div class="practice-info">
-                <div class="p-label">Практика 0</div>
+                <div class="p-label" style="color:#7c3aed">Практика 0</div>
                 <h3>Повторить урок по Figma / Pixso</h3>
                 <div class="practice-desc">Закрепляем базовые навыки работы с инструментом перед началом первого проекта.</div>
+                <div class="time-summary">
+                    <span class="time-tag">&#9202; Новичок: 2-4 часа</span>
+                    <span class="time-tag">&#9202; Опытный: 1-2 часа</span>
+                </div>
             </div>
             <span class="p-arrow">&#9660;</span>
         </div>
         <div class="practice-body">
             <div class="result-block">
                 <h4>Результат практики</h4>
-                <p>Уверенное владение <b>Figma или Pixso</b> — создание фреймов, работа со слоями, текстом, фигурами и изображениями. Это фундамент для всего обучения.</p>
+                <p>Уверенное владение <b>Figma или Pixso</b> — создание фреймов, работа со слоями, текстом, фигурами и изображениями.</p>
             </div>
 
             <div class="steps-block">
                 <h4>Что нужно сделать</h4>
-                <div class="step-item">
-                    <div class="step-num">1</div>
-                    <div class="step-text">Посмотри <b>Урок 0.4 — Знакомство с Figma</b> или <b>Урок 0.5 — Знакомство с Pixso</b> (выбери один инструмент)</div>
-                </div>
-                <div class="step-item">
-                    <div class="step-num">2</div>
-                    <div class="step-text">Открой Figma/Pixso рядом с видео и <b>повторяй каждое действие</b> параллельно с уроком. Не просто смотри — делай!</div>
-                </div>
-            </div>
 
-            <div class="materials">
-                <div class="mat-group">
-                    <div class="mat-group-title">Уроки для этой практики</div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Урок 0.4 — Знакомство с Figma</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/NfnH7k4QiSA" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239372" target="_blank" class="vk">VK Video</a>
-                                <a href="https://www.figma.com/design/rLkVTmn9ffVFFcAFkHF3Ke/" target="_blank" class="fg">Figma-файл</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Урок 0.5 — Знакомство с Pixso</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/3SjDHfIn53s" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239504" target="_blank" class="vk">VK Video</a>
-                                <a href="https://pixso.net/app/design/G_25Ru8HhkSsbqorIlqeHA" target="_blank" class="fg">Pixso-файл</a>
+                <div class="step-item">
+                    <div class="step-top">
+                        <div class="step-num">1</div>
+                        <div class="step-main">
+                            <div class="step-text"><b>Выбери инструмент</b> (Figma или Pixso) и посмотри урок</div>
+                            <div class="step-time">&#9202; 1-2 часа (просмотр)</div>
+                            <div class="step-resources">
+                                <div class="step-res">
+                                    <div class="mat-icon video">&#9654;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">Урок 0.4 — Знакомство с Figma</div>
+                                        <div class="mat-links">
+                                            <a href="https://youtu.be/NfnH7k4QiSA" target="_blank" class="yt">YouTube</a>
+                                            <a href="https://vkvideo.ru/video-199746853_456239372" target="_blank" class="vk">VK Video</a>
+                                            <a href="https://www.figma.com/design/rLkVTmn9ffVFFcAFkHF3Ke/" target="_blank" class="fg">Figma-файл</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step-res">
+                                    <div class="mat-icon video">&#9654;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">Урок 0.5 — Знакомство с Pixso</div>
+                                        <div class="mat-links">
+                                            <a href="https://youtu.be/3SjDHfIn53s" target="_blank" class="yt">YouTube</a>
+                                            <a href="https://vkvideo.ru/video-199746853_456239504" target="_blank" class="vk">VK Video</a>
+                                            <a href="https://pixso.net/app/design/G_25Ru8HhkSsbqorIlqeHA" target="_blank" class="fg">Pixso-файл</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="mat-group">
-                    <div class="mat-group-title">Дополнительные материалы недели</div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Урок 0.1 — Добро пожаловать на обучение!</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/O6sC5HR1v1I" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239502" target="_blank" class="vk">VK Video</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Урок 0.3 — Что будешь уметь после обучения</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/9XNoxv8kPeI" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239503" target="_blank" class="vk">VK Video</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon link">&#9734;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Конструктор SMART-целей</div>
-                            <div class="mat-links">
-                                <a href="https://goals-rigayaya.netlify.app/" target="_blank" class="ot">Открыть</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Toggle Track — трекер привычек</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/QW0pbYXiB5M" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239505" target="_blank" class="vk">VK Video</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Календарь планирования (Google / Apple)</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/c_cgMZqfNeM" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239506" target="_blank" class="vk">VK Video</a>
-                            </div>
+
+                <div class="step-item">
+                    <div class="step-top">
+                        <div class="step-num">2</div>
+                        <div class="step-main">
+                            <div class="step-text"><b>Повторяй каждое действие</b> параллельно с видео. Открой Figma/Pixso рядом с уроком — не просто смотри, а делай!</div>
+                            <div class="step-time">&#9202; 1-2 часа (практика)</div>
                         </div>
                     </div>
                 </div>
@@ -226,219 +237,204 @@ a.ot{background:rgba(22,163,74,.06);color:#16a34a;border:1px solid rgba(22,163,7
     </div>
 </div>
 
-<!-- ==================== НЕДЕЛЯ 1 ==================== -->
+<!-- ==================== ПРОЕКТ 1: КОММЕРЧЕСКИЙ ЛЕНДИНГ ==================== -->
+<div class="project-banner">
+    <div class="project-banner-inner">
+        <h2>Проект 1 — Коммерческий лендинг</h2>
+        <div class="pb-sub">Все практики ниже — этапы создания одного коммерческого лендинга. От мудборда до опубликованного сайта на Тильде.</div>
+        <div class="progress-steps">
+            <div class="ps-item done"><div class="ps-dot">П1</div></div>
+            <div class="ps-line"></div>
+            <div class="ps-item"><div class="ps-dot">П2</div></div>
+            <div class="ps-line"></div>
+            <div class="ps-item"><div class="ps-dot">П3</div></div>
+            <div class="ps-line"></div>
+            <div class="ps-item"><div class="ps-dot">П4</div></div>
+            <div style="margin-left:12px;font-size:.68rem;font-weight:700;color:rgba(255,255,255,.45)">25% &rarr; 50% &rarr; 75% &rarr; 100%</div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== ПРАКТИКА 1 (25%) ==================== -->
 <div class="week-section" id="w1">
     <div class="week-header">
         <div class="week-dot"></div>
-        <h2>Неделя 1 — Сбор материалов и концепции</h2>
+        <h2>Неделя 1 — Начало работы</h2>
     </div>
 
-    <!-- Практика 1, Этап 1: Сбор материалов -->
-    <div class="practice" data-id="p1-1">
+    <div class="practice" data-id="p1">
         <div class="practice-head" onclick="toggleP(this.parentElement)">
-            <div class="practice-num">П 1.1</div>
+            <div class="practice-num">П 1</div>
             <div class="practice-info">
-                <div class="p-label">Практика 1, часть 1</div>
-                <h3>Сбор материалов для коммерческого лендинга</h3>
-                <div class="practice-desc">Выбираем нишу, собираем мудборд, контент и референсы — всё, что нужно для начала дизайна.</div>
+                <div class="p-label">Практика 1 <span class="pct-badge">25% проекта</span></div>
+                <h3>Начало работы над коммерческим лендингом</h3>
+                <div class="practice-desc">Выбираем нишу, собираем мудборд и референсы, разрабатываем концепции первого экрана.</div>
+                <div class="time-summary">
+                    <span class="time-tag">&#9202; Новичок: 12-20 часов</span>
+                    <span class="time-tag">&#9202; Опытный: 5-9 часов</span>
+                </div>
             </div>
             <span class="p-arrow">&#9660;</span>
         </div>
         <div class="practice-body">
             <div class="result-block">
                 <h4>Результат практики</h4>
-                <p>Файл в Figma с <b>мудбордом</b> (2-3 штуки), <b>контентом</b> для лендинга и <b>референсами</b> по каждому блоку. Это основа для создания концепций.</p>
+                <p>Файл в Figma с <b>мудбордами</b> (2-3 штуки), <b>референсами</b> для первого экрана и <b>2-3 концепциями первого экрана</b> в разных стилях. Лучшая концепция станет основой для дизайна всего сайта.</p>
             </div>
 
-            <div class="task-desc">
-                <b>Задание:</b>
-                <ul>
-                    <li>Выбрать тему для сайта через <b>Рандомайзер</b> (запускай 1-2 раза, не ищи специально «интересную» тему)</li>
-                    <li>Собрать <b>2-3 мудборда</b> проекта. Один мудборд = один будущий концепт</li>
-                    <li>Найти сайт, откуда брать контент, или сгенерировать текст через ChatGPT по структуре продающего лендинга <span class="help-q" onclick="toggleHelp(this)">?</span>
-                        <div class="help-content">
-                            <p><b>Структура продающего лендинга</b> (используй как основу):</p>
-                            <p>1. <b>Первый экран</b> — заголовок-оффер, подзаголовок, кнопка CTA<br>
-                            2. <b>О компании / продукте</b> — кратко: кто вы и чем занимаетесь<br>
-                            3. <b>Преимущества</b> — 3-6 ключевых причин выбрать вас<br>
-                            4. <b>Как это работает</b> — этапы работы / процесс (3-5 шагов)<br>
-                            5. <b>Услуги / Тарифы</b> — что предлагаете и за сколько<br>
-                            6. <b>Примеры работ / Портфолио</b> — если применимо<br>
-                            7. <b>Отзывы</b> — 3-4 отзыва клиентов<br>
-                            8. <b>FAQ</b> — 4-6 частых вопросов с ответами<br>
-                            9. <b>Контакты / Форма связи</b></p>
-                            <p><b>Промпт для ChatGPT:</b></p>
-                            <code>Сгенерируй текст для продающего лендинга на тему «[ТВОЯ НИША]». Нужен текст для блоков: первый экран (заголовок + подзаголовок), о компании, 4 преимущества, этапы работы (4 шага), 3 тарифа, 4 отзыва, 5 вопросов FAQ, контакты. Стиль: продающий, лаконичный, без воды.</code>
-                        </div>
-                    </li>
-                    <li>Собрать по <b>5-10 референсов</b> для каждого блока</li>
-                </ul>
-                <div class="warn">&#9888; Для поиска референсов НЕ рекомендую на первые разы использовать Dribbble и Behance — там много некачественных работ и вы будете копировать чужие ошибки</div>
-            </div>
+            <div class="steps-block">
+                <h4>Что нужно сделать</h4>
 
-            <div class="materials">
-                <div class="mat-group">
-                    <div class="mat-group-title">Уроки — обязательно посмотреть перед практикой</div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Урок 1.3 — Мудборд</div>
-                            <div class="mat-note">Что такое мудборд, как его создавать, примеры и типичные ошибки</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/FM-XNG2CY2E" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239383" target="_blank" class="vk">VK Video</a>
-                                <a href="https://www.figma.com/design/JoKFOtr53m3kfQbhuYoqe7/" target="_blank" class="fg">Примеры мудбордов</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Урок 1.1 — Обзор инструментария Фигмы</div>
-                            <div class="mat-note">Все инструменты, которые пригодятся для работы</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/Yer7Bl0MaUk" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239378" target="_blank" class="vk">VK Video</a>
-                                <a href="https://www.figma.com/design/1Q6WkGVfcQzH77SGSLTi8r/" target="_blank" class="fg">Figma</a>
+                <!-- Шаг 1: Выбрать нишу -->
+                <div class="step-item">
+                    <div class="step-top">
+                        <div class="step-num">1</div>
+                        <div class="step-main">
+                            <div class="step-text"><b>Выбери нишу</b> для лендинга. Запусти рандомайзер 1-2 раза — не ищи специально «интересную» тему</div>
+                            <div class="step-time">&#9202; 30 мин — 1 час</div>
+                            <div class="step-resources">
+                                <div class="step-res">
+                                    <div class="mat-icon figma">&#9670;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">Рандомайзер для выбора ниши</div>
+                                        <div class="mat-note">Открой в Figma, нажми Present (Play), затем жми кнопку</div>
+                                        <div class="mat-links">
+                                            <a href="https://www.figma.com/design/azWzEGNpNsCnqspWIr7cbm/" target="_blank" class="fg">Figma</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step-res">
+                                    <div class="mat-icon link">&#9734;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">Методичка: выбор ниши для редизайна</div>
+                                        <div class="mat-links">
+                                            <a href="https://narrow-thief-769.notion.site/7-251f316a3da78085a862ef687ec5d844" target="_blank" class="ot">Notion</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="mat-group">
-                    <div class="mat-group-title">Материалы для выполнения</div>
-                    <div class="mat-item">
-                        <div class="mat-icon figma">&#9670;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Рандомайзер для выбора ниши</div>
-                            <div class="mat-note">Открой в Figma, нажми Present (Play), затем жми кнопку на экране</div>
-                            <div class="mat-links">
-                                <a href="https://www.figma.com/design/azWzEGNpNsCnqspWIr7cbm/" target="_blank" class="fg">Открыть</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon figma">&#9670;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Файл с готовыми мудбордами</div>
-                            <div class="mat-note">Для новичков: выбери 3 подходящих мудборда из этого файла вместо создания с нуля</div>
-                            <div class="mat-links">
-                                <a href="https://www.figma.com/design/23YqThjMHjUxTyyNqJ9CO2/" target="_blank" class="fg">Открыть</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon figma">&#9670;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">База референсов</div>
-                            <div class="mat-note">Готовые референсы по блокам — используй для вдохновения</div>
-                            <div class="mat-links">
-                                <a href="https://www.figma.com/design/osD8kn3wqCndSVdg469CiE/" target="_blank" class="fg">Открыть</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon link">&#9734;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Методичка: выбор ниши для редизайна</div>
-                            <div class="mat-links">
-                                <a href="https://narrow-thief-769.notion.site/7-251f316a3da78085a862ef687ec5d844" target="_blank" class="ot">Notion</a>
+
+                <!-- Шаг 2: Собрать мудборды -->
+                <div class="step-item">
+                    <div class="step-top">
+                        <div class="step-num">2</div>
+                        <div class="step-main">
+                            <div class="step-text"><b>Собери 2-3 мудборда.</b> Один мудборд = один будущий концепт. Мудборды должны визуально отличаться друг от друга</div>
+                            <div class="step-time">&#9202; 3-6 часов (нов.) / 1-2 часа (опыт.)</div>
+                            <div class="step-resources">
+                                <div class="step-res">
+                                    <div class="mat-icon video">&#9654;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">Урок 1.3 — Мудборд</div>
+                                        <div class="mat-note">Что такое мудборд, как создавать, примеры и ошибки</div>
+                                        <div class="mat-links">
+                                            <a href="https://youtu.be/FM-XNG2CY2E" target="_blank" class="yt">YouTube</a>
+                                            <a href="https://vkvideo.ru/video-199746853_456239383" target="_blank" class="vk">VK Video</a>
+                                            <a href="https://www.figma.com/design/JoKFOtr53m3kfQbhuYoqe7/" target="_blank" class="fg">Примеры мудбордов</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step-res">
+                                    <div class="mat-icon figma">&#9670;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">Файл с готовыми мудбордами</div>
+                                        <div class="mat-note">Для новичков: выбери 2-3 подходящих мудборда из этого файла вместо создания с нуля</div>
+                                        <div class="mat-links">
+                                            <a href="https://www.figma.com/design/23YqThjMHjUxTyyNqJ9CO2/" target="_blank" class="fg">Figma</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="mat-group">
-                    <div class="mat-group-title"><span class="bonus-label">Бонус</span> Дополнительные уроки</div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Чайный урок 1.4 — Photopea</div>
-                            <div class="mat-note">Бесплатный аналог Photoshop — обработка фото для сайтов</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/tx_siFDjJmg" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239377" target="_blank" class="vk">VK Video</a>
-                                <a href="https://www.figma.com/design/1Q6WkGVfcQzH77SGSLTi8r/" target="_blank" class="fg">Figma</a>
+
+                <!-- Шаг 3: Собрать референсы -->
+                <div class="step-item">
+                    <div class="step-top">
+                        <div class="step-num">3</div>
+                        <div class="step-main">
+                            <div class="step-text"><b>Собери референсы</b> для первого экрана (5-10 штук)</div>
+                            <div class="step-time">&#9202; 2-4 часа (нов.) / 1-2 часа (опыт.)</div>
+                            <div class="step-resources">
+                                <div class="step-res">
+                                    <div class="mat-icon figma">&#9670;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">База референсов</div>
+                                        <div class="mat-note">Готовые референсы по блокам — используй для вдохновения</div>
+                                        <div class="mat-links">
+                                            <a href="https://www.figma.com/design/osD8kn3wqCndSVdg469CiE/" target="_blank" class="fg">Figma</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            <div class="warn">&#9888; Для поиска референсов НЕ рекомендую на первые разы использовать Dribbble и Behance — там много некачественных работ и вы будете копировать чужие ошибки</div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Практика 1, Этап 2: Разработка концепций -->
-    <div class="practice" data-id="p1-2">
-        <div class="practice-head" onclick="toggleP(this.parentElement)">
-            <div class="practice-num">П 1.2</div>
-            <div class="practice-info">
-                <div class="p-label">Практика 1, часть 2</div>
-                <h3>Разработка концепций для лендинга</h3>
-                <div class="practice-desc">Создаём 2-3 концепции первого экрана — каждая в стиле своего мудборда.</div>
-            </div>
-            <span class="p-arrow">&#9660;</span>
-        </div>
-        <div class="practice-body">
-            <div class="result-block">
-                <h4>Результат практики</h4>
-                <p><b>2-3 концепции первого экрана</b> лендинга (шапка + главный блок с оффером), каждая в визуально отличающемся стиле. Лучшая концепция станет основой для полного дизайна на следующей неделе.</p>
-            </div>
-
-            <div class="task-desc">
-                <b>Задание:</b>
-                <ul>
-                    <li>Разработать по концепции в стиле каждого мудборда. <b>1 мудборд = 1 концепция</b></li>
-                </ul>
-                <p style="margin-top:10px">Концепции — это варианты дизайна, которые отличаются <b>стилем / цветом / композицией</b>. Важно, чтобы концепции не выглядели как варианты одного дизайна — это должны быть принципиально разные визуальные подходы.</p>
-                <div class="warn">&#9888; Для новичков: используйте вайрфреймы и структуру из файла ниже для упрощения</div>
-            </div>
-
-            <div class="materials">
-                <div class="mat-group">
-                    <div class="mat-group-title">Уроки — обязательно посмотреть перед практикой</div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Урок 1.2 — Базовые навыки дизайна</div>
-                            <div class="mat-note">Композиция, типографика, колористика — основа для создания концепций</div>
-                            <div class="mat-links">
-                                <a href="https://www.youtube.com/playlist?list=PLb6s4SDX8kEY5_xuoKucn3Df609aaBZz6" target="_blank" class="yt">YouTube (плейлист)</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239379" target="_blank" class="vk">Композиция</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239380" target="_blank" class="vk">Типографика</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239381" target="_blank" class="vk">Колористика</a>
-                                <a href="https://www.figma.com/design/wAquij483jO7kQ8JOoax9y/" target="_blank" class="fg">Figma</a>
+                <!-- Шаг 4: Разработать концепции -->
+                <div class="step-item">
+                    <div class="step-top">
+                        <div class="step-num">4</div>
+                        <div class="step-main">
+                            <div class="step-text"><b>Разработай 2-3 концепции первого экрана</b> (шапка + главный блок с оффером). 1 мудборд = 1 концепция. Концепции должны принципиально отличаться визуально — это разные стили, не варианты одного дизайна</div>
+                            <div class="step-time">&#9202; 5-10 часов (нов.) / 2-4 часа (опыт.)</div>
+                            <div class="step-resources">
+                                <div class="step-res">
+                                    <div class="mat-icon video">&#9654;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">Урок 1.2 — Базовые навыки дизайна</div>
+                                        <div class="mat-note">Композиция, типографика, колористика — основа для создания концепций</div>
+                                        <div class="mat-links">
+                                            <a href="https://www.youtube.com/playlist?list=PLb6s4SDX8kEY5_xuoKucn3Df609aaBZz6" target="_blank" class="yt">YouTube (плейлист)</a>
+                                            <a href="https://vkvideo.ru/video-199746853_456239379" target="_blank" class="vk">Композиция</a>
+                                            <a href="https://vkvideo.ru/video-199746853_456239380" target="_blank" class="vk">Типографика</a>
+                                            <a href="https://vkvideo.ru/video-199746853_456239381" target="_blank" class="vk">Колористика</a>
+                                            <a href="https://www.figma.com/design/wAquij483jO7kQ8JOoax9y/" target="_blank" class="fg">Figma</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step-res">
+                                    <div class="mat-icon video">&#9654;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">Урок 1.1 — Обзор инструментария Figma</div>
+                                        <div class="mat-note">Все инструменты, которые пригодятся для работы</div>
+                                        <div class="mat-links">
+                                            <a href="https://youtu.be/Yer7Bl0MaUk" target="_blank" class="yt">YouTube</a>
+                                            <a href="https://vkvideo.ru/video-199746853_456239378" target="_blank" class="vk">VK Video</a>
+                                            <a href="https://www.figma.com/design/1Q6WkGVfcQzH77SGSLTi8r/" target="_blank" class="fg">Figma</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step-res">
+                                    <div class="mat-icon video">&#9654;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">Как собрать концепцию из мудборда</div>
+                                        <div class="mat-note">Эфир куратора Дианы — пошаговый разбор</div>
+                                        <div class="mat-links">
+                                            <a href="https://www.youtube.com/watch?v=61FGLb4y0kU" target="_blank" class="yt">YouTube</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step-res">
+                                    <div class="mat-icon figma">&#9670;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">Файл сеток для Тильды</div>
+                                        <div class="mat-note">Скопируй сетку в свой файл, чтобы концепции были по сетке</div>
+                                        <div class="mat-links">
+                                            <a href="https://www.figma.com/design/OEHi5ZPHx4KDdI7mTGfC8t/" target="_blank" class="fg">Figma</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Чайный урок 1.5 — Как усилить концепции?</div>
-                            <div class="mat-note">Обратная связь на реальном проекте — поможет понять, что делает концепцию сильной</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/qHub7lwuuMQ" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239392" target="_blank" class="vk">VK Video</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mat-group">
-                    <div class="mat-group-title">Материалы для выполнения</div>
-                    <div class="mat-item">
-                        <div class="mat-icon figma">&#9670;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Примеры концепций</div>
-                            <div class="mat-note">Посмотри, чем концепция отличается от варианта одного дизайна</div>
-                            <div class="mat-links">
-                                <a href="https://www.figma.com/design/02nIJJIsMrPo8ias8DKksK/" target="_blank" class="fg">Открыть</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon figma">&#9670;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Структура лендинга + вайрфреймы</div>
-                            <div class="mat-note">Для новичков — готовая структура, чтобы не начинать с чистого листа</div>
-                            <div class="mat-links">
-                                <a href="https://www.figma.com/design/x2GY8ePoimkJw4X3jYs7cX/" target="_blank" class="fg">Открыть</a>
+                            <div class="hint-box">
+                                <b>Размер фрейма:</b> 1440px ширина (стандарт для десктопа под Тильду). Контентная область — 1200px, сетка 12 колонок.<br>
+                                <b>Ctrl+G</b> — включить/выключить отображение сетки в Figma.<br>
+                                <b>Совет:</b> скопируй сетку из файла сеток (выше) в свой проект перед началом работы.
                             </div>
                         </div>
                     </div>
@@ -448,7 +444,7 @@ a.ot{background:rgba(22,163,74,.06);color:#16a34a;border:1px solid rgba(22,163,7
     </div>
 </div>
 
-<!-- ==================== НЕДЕЛЯ 2 ==================== -->
+<!-- ==================== ПРАКТИКА 2 (50%) ==================== -->
 <div class="week-section" id="w2">
     <div class="week-header">
         <div class="week-dot"></div>
@@ -459,150 +455,147 @@ a.ot{background:rgba(22,163,74,.06);color:#16a34a;border:1px solid rgba(22,163,7
         <div class="practice-head" onclick="toggleP(this.parentElement)">
             <div class="practice-num">П 2</div>
             <div class="practice-info">
-                <div class="p-label">Практика 2</div>
+                <div class="p-label">Практика 2 <span class="pct-badge">50% проекта</span></div>
                 <h3>Разработка дизайна всего лендинга (десктоп)</h3>
-                <div class="practice-desc">Концепции готовы, стиль определён — пора дизайнить остальные блоки сайта.</div>
+                <div class="practice-desc">Определяем структуру, готовим текст, собираем референсы и дизайним все блоки сайта.</div>
+                <div class="time-summary">
+                    <span class="time-tag">&#9202; Новичок: 16-28 часов</span>
+                    <span class="time-tag">&#9202; Опытный: 7-12 часов</span>
+                </div>
             </div>
             <span class="p-arrow">&#9660;</span>
         </div>
         <div class="practice-body">
             <div class="result-block">
                 <h4>Результат практики</h4>
-                <p>Полный <b>десктоп-макет коммерческого лендинга</b> в Figma — все блоки от шапки до подвала, выстроенные по сетке. Применять AutoLayout и компоненты не обязательно — это дизайн для Тильды, и вы сами будете его верстать.</p>
+                <p>Полный <b>десктоп-макет коммерческого лендинга</b> в Figma — все блоки от шапки до подвала, выстроенные по сетке.</p>
             </div>
 
-            <div class="task-desc">
-                <b>Задание:</b>
-                <ul>
-                    <li>Разработать дизайн <b>всего лендинга</b>, всех блоков</li>
-                </ul>
-                <p style="margin-top:10px"><b>Как подойти к дизайну:</b> выбери лучшую концепцию (по обратной связи от наставника), дизайни блоки сверху вниз — от первого экрана к подвалу. Используй сетку из урока 2.3, следи за визуальным ритмом, сверяйся с методичкой «Элементы сайта».</p>
-            </div>
+            <div class="steps-block">
+                <h4>Что нужно сделать</h4>
 
-            <div class="materials">
-                <div class="mat-group">
-                    <div class="mat-group-title">Уроки — обязательно посмотреть перед практикой</div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Урок 2.1 — Структура продающего лендинга</div>
-                            <div class="mat-note">Какие блоки должны быть и в каком порядке</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/Su5DK54keOQ" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239384" target="_blank" class="vk">VK Video</a>
-                                <a href="https://www.figma.com/board/azFwJWbwBlKEA8JX9aemhu/" target="_blank" class="fg">Figma</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Урок 2.2 — Вайрфреймы</div>
-                            <div class="mat-note">Как создать схему будущего дизайна</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/Dug8FpiNxN4" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239386" target="_blank" class="vk">VK Video</a>
-                                <a href="https://www.figma.com/design/j4K9nztero1o0NnY3fFFGK/" target="_blank" class="fg">Figma</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Урок 2.3 — Сетка и система отступов</div>
-                            <div class="mat-note">Как правильно выстроить макет</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/oLTUAbEtcA4" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239385" target="_blank" class="vk">VK Video</a>
-                                <a href="https://www.figma.com/design/OEHi5ZPHx4KDdI7mTGfC8t/" target="_blank" class="fg">Figma</a>
+                <!-- Шаг 1: Определить структуру -->
+                <div class="step-item">
+                    <div class="step-top">
+                        <div class="step-num">1</div>
+                        <div class="step-main">
+                            <div class="step-text"><b>Определи структуру лендинга.</b> Посмотри урок, изучи файл структуры и составь план: какие блоки будут на сайте и в каком порядке</div>
+                            <div class="step-time">&#9202; 1-2 часа (нов.) / 30 мин (опыт.)</div>
+                            <div class="step-resources">
+                                <div class="step-res">
+                                    <div class="mat-icon video">&#9654;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">Урок 2.1 — Структура продающего лендинга</div>
+                                        <div class="mat-note">Какие блоки должны быть и в каком порядке</div>
+                                        <div class="mat-links">
+                                            <a href="https://youtu.be/Su5DK54keOQ" target="_blank" class="yt">YouTube</a>
+                                            <a href="https://vkvideo.ru/video-199746853_456239384" target="_blank" class="vk">VK Video</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step-res">
+                                    <div class="mat-icon figma">&#9670;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">Файл структуры продающего лендинга</div>
+                                        <div class="mat-links">
+                                            <a href="https://www.figma.com/board/azFwJWbwBlKEA8JX9aemhu/" target="_blank" class="fg">Figma Board</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step-res">
+                                    <div class="mat-icon link">&#9734;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">Методичка «Элементы сайта»</div>
+                                        <div class="mat-note">Какие элементы и страницы должны быть на большинстве сайтов</div>
+                                        <div class="mat-links">
+                                            <a href="https://narrow-thief-769.notion.site/d641979c2dff4394aeb95cfbe21d9517" target="_blank" class="ot">Notion</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="mat-group">
-                    <div class="mat-group-title">Материалы для выполнения</div>
-                    <div class="mat-item">
-                        <div class="mat-icon link">&#9734;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Методичка «Элементы сайта»</div>
-                            <div class="mat-note">Какие элементы и страницы должны быть на большинстве сайтов</div>
-                            <div class="mat-links">
-                                <a href="https://narrow-thief-769.notion.site/d641979c2dff4394aeb95cfbe21d9517" target="_blank" class="ot">Notion</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon figma">&#9670;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Примеры вайрфреймов</div>
-                            <div class="mat-links">
-                                <a href="https://www.figma.com/design/kMpVpULOzg9ceozmHSQEBI/" target="_blank" class="fg">Открыть</a>
+
+                <!-- Шаг 2: Подготовить текст -->
+                <div class="step-item">
+                    <div class="step-top">
+                        <div class="step-num">2</div>
+                        <div class="step-main">
+                            <div class="step-text"><b>Подготовь текст</b> для сайта (заголовки, подзаголовки, описания, контакты и т.д.) через ChatGPT или другие нейросети <span class="help-q" onclick="toggleHelp(this)">?</span></div>
+                            <div class="step-time">&#9202; 1-3 часа (нов.) / 30 мин — 1 час (опыт.)</div>
+                            <div class="help-content">
+                                <p><b>Промпт для ChatGPT:</b></p>
+                                <code>Сгенерируй текст для продающего лендинга на тему «[ТВОЯ НИША]». Нужен текст для блоков: первый экран (заголовок + подзаголовок), о компании, 4 преимущества, этапы работы (4 шага), 3 тарифа, 4 отзыва, 5 вопросов FAQ, контакты. Стиль: продающий, лаконичный, без воды.</code>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="mat-group">
-                    <div class="mat-group-title"><span class="bonus-label">Бонус</span> Нейросети для дизайнера</div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Чайный урок 2.1 — Midjourney</div>
-                            <div class="mat-note">Генерация изображений для дизайна</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/0kmVlcUFd1s" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239389" target="_blank" class="vk">VK Video</a>
-                                <a href="https://www.figma.com/design/l6RR4zQezXqlnKtmBHaYNN/" target="_blank" class="fg">Figma</a>
+
+                <!-- Шаг 3: Собрать референсы -->
+                <div class="step-item">
+                    <div class="step-top">
+                        <div class="step-num">3</div>
+                        <div class="step-main">
+                            <div class="step-text"><b>Подготовь 5-10 референсов</b> для каждого экрана будущего сайта</div>
+                            <div class="step-time">&#9202; 3-5 часов (нов.) / 1-2 часа (опыт.)</div>
+                            <div class="step-resources">
+                                <div class="step-res">
+                                    <div class="mat-icon figma">&#9670;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">База референсов</div>
+                                        <div class="mat-note">Готовые референсы по блокам — используй для вдохновения</div>
+                                        <div class="mat-links">
+                                            <a href="https://www.figma.com/design/osD8kn3wqCndSVdg469CiE/" target="_blank" class="fg">Figma</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Чайный урок 2.2 — ChatGPT для дизайнера</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/R0cRpR0QMuo" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239388" target="_blank" class="vk">VK Video</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Чайный урок 2.3 — Recraft</div>
-                            <div class="mat-note">Генерация иконок и иллюстраций</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/Y4EPn6IWvOE" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239390" target="_blank" class="vk">VK Video</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Чайный урок 2.4 — Sora (видеогенерация)</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/eYnj9-k7xwc" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239513" target="_blank" class="vk">VK Video</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Чайный урок 2.5 — Анимированный дизайн (GPT + MJD)</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/xd7QuSuagAo" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239515" target="_blank" class="vk">VK Video</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Чайный урок 2.6 — Cursor (AI-сайты)</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/7YZsrrlsp9o" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239514" target="_blank" class="vk">VK Video</a>
+                </div>
+
+                <!-- Шаг 4: Дизайн -->
+                <div class="step-item">
+                    <div class="step-top">
+                        <div class="step-num">4</div>
+                        <div class="step-main">
+                            <div class="step-text"><b>Разработай дизайн всего лендинга.</b> Дизайни блоки сверху вниз — от первого экрана к подвалу. Выбери лучшую концепцию (по обратной связи от наставника) и развивай её на весь сайт</div>
+                            <div class="step-time">&#9202; 10-18 часов (нов.) / 5-8 часов (опыт.)</div>
+                            <div class="step-resources">
+                                <div class="step-res">
+                                    <div class="mat-icon video">&#9654;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">Урок 2.2 — Вайрфреймы</div>
+                                        <div class="mat-note">Как создать схему будущего дизайна</div>
+                                        <div class="mat-links">
+                                            <a href="https://youtu.be/Dug8FpiNxN4" target="_blank" class="yt">YouTube</a>
+                                            <a href="https://vkvideo.ru/video-199746853_456239386" target="_blank" class="vk">VK Video</a>
+                                            <a href="https://www.figma.com/design/j4K9nztero1o0NnY3fFFGK/" target="_blank" class="fg">Figma</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step-res">
+                                    <div class="mat-icon figma">&#9670;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">Примеры вайрфреймов</div>
+                                        <div class="mat-links">
+                                            <a href="https://www.figma.com/design/kMpVpULOzg9ceozmHSQEBI/" target="_blank" class="fg">Figma</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step-res">
+                                    <div class="mat-icon video">&#9654;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">Урок 2.3 — Сетка и система отступов</div>
+                                        <div class="mat-note">Как правильно выстроить макет по сетке</div>
+                                        <div class="mat-links">
+                                            <a href="https://youtu.be/oLTUAbEtcA4" target="_blank" class="yt">YouTube</a>
+                                            <a href="https://vkvideo.ru/video-199746853_456239385" target="_blank" class="vk">VK Video</a>
+                                            <a href="https://www.figma.com/design/OEHi5ZPHx4KDdI7mTGfC8t/" target="_blank" class="fg">Файл сеток</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -612,7 +605,7 @@ a.ot{background:rgba(22,163,74,.06);color:#16a34a;border:1px solid rgba(22,163,7
     </div>
 </div>
 
-<!-- ==================== НЕДЕЛЯ 3 ==================== -->
+<!-- ==================== ПРАКТИКА 3 (75%) ==================== -->
 <div class="week-section" id="w3">
     <div class="week-header">
         <div class="week-dot"></div>
@@ -623,98 +616,100 @@ a.ot{background:rgba(22,163,74,.06);color:#16a34a;border:1px solid rgba(22,163,7
         <div class="practice-head" onclick="toggleP(this.parentElement)">
             <div class="practice-num">П 3</div>
             <div class="practice-info">
-                <div class="p-label">Практика 3</div>
+                <div class="p-label">Практика 3 <span class="pct-badge">75% проекта</span></div>
                 <h3>Разработка адаптива для лендинга</h3>
-                <div class="practice-desc">Создаём версии лендинга для планшета и мобильного — чтобы сайт хорошо выглядел на всех устройствах.</div>
+                <div class="practice-desc">Создаём 4 адаптивных версии лендинга под все брейкпоинты Тильды.</div>
+                <div class="time-summary">
+                    <span class="time-tag">&#9202; Новичок: 10-16 часов</span>
+                    <span class="time-tag">&#9202; Опытный: 5-8 часов</span>
+                </div>
             </div>
             <span class="p-arrow">&#9660;</span>
         </div>
         <div class="practice-body">
             <div class="result-block">
                 <h4>Результат практики</h4>
-                <p>Адаптивные макеты лендинга для <b>планшета (768px)</b> и <b>мобильного (375px)</b>. Весь дизайн полностью готов к вёрстке на Тильде.</p>
+                <p><b>4 адаптивных версии</b> лендинга (960px, 640px, 480px, 320px) в дополнение к десктопу (1440px). Весь дизайн полностью готов к вёрстке на Тильде.</p>
             </div>
 
-            <div class="task-desc">
-                <b>Задание:</b>
-                <ul>
-                    <li>Сделать адаптив своего лендинга для <b>планшета</b> и <b>мобильного</b></li>
-                </ul>
-                <p style="margin-top:10px"><b>Рекомендуемые разрешения:</b> Десктоп 1440px (уже готов), Планшет 768px, Мобильный 375px.<br><b>Важно:</b> не просто сжимай элементы — <b>перестраивай композицию</b>. Колонки (2-3 на десктопе) на мобильном становятся одной. Шрифты уменьшай на 20-30%. Кнопки — не меньше 44px.</p>
-            </div>
+            <div class="steps-block">
+                <h4>Что нужно сделать</h4>
 
-            <div class="materials">
-                <div class="mat-group">
-                    <div class="mat-group-title">Уроки — обязательно посмотреть перед практикой</div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Урок 3.1 — Адаптив (теория)</div>
-                            <div class="mat-note">Основные принципы адаптивного дизайна</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/kYk2nZPAE9g" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239460" target="_blank" class="vk">VK Video</a>
-                                <a href="https://www.figma.com/design/Lb7jAfMnrVa36dJZyz0BkP/" target="_blank" class="fg">Figma</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Урок 3.2 — Адаптив на реальном примере</div>
-                            <div class="mat-note">Как создавать адаптив на практике</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/nWXVRIBbdUM" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239461" target="_blank" class="vk">VK Video</a>
-                                <a href="https://www.figma.com/design/zlBtmFe5vJzlP7TDvaF7uH/" target="_blank" class="fg">Figma</a>
+                <!-- Шаг 1: Изучить принципы -->
+                <div class="step-item">
+                    <div class="step-top">
+                        <div class="step-num">1</div>
+                        <div class="step-main">
+                            <div class="step-text"><b>Изучи принципы адаптивного дизайна</b></div>
+                            <div class="step-time">&#9202; 1-2 часа</div>
+                            <div class="step-resources">
+                                <div class="step-res">
+                                    <div class="mat-icon video">&#9654;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">Урок 3.1 — Адаптив (теория)</div>
+                                        <div class="mat-note">Основные принципы адаптивного дизайна</div>
+                                        <div class="mat-links">
+                                            <a href="https://youtu.be/kYk2nZPAE9g" target="_blank" class="yt">YouTube</a>
+                                            <a href="https://vkvideo.ru/video-199746853_456239460" target="_blank" class="vk">VK Video</a>
+                                            <a href="https://www.figma.com/design/Lb7jAfMnrVa36dJZyz0BkP/" target="_blank" class="fg">Figma</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="mat-group">
-                    <div class="mat-group-title"><span class="bonus-label">Бонус</span> AutoLayout и Components (пригодятся в будущих проектах)</div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Урок 3.3 — AutoLayouts</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/LzISiWiexsY" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239436" target="_blank" class="vk">VK Video</a>
-                                <a href="https://www.figma.com/design/TDgzJqztEflKSN7K5CoHFr/" target="_blank" class="fg">Figma</a>
+
+                <!-- Шаг 2: Сделать адаптив -->
+                <div class="step-item">
+                    <div class="step-top">
+                        <div class="step-num">2</div>
+                        <div class="step-main">
+                            <div class="step-text"><b>Сделай 4 адаптивных версии</b> своего лендинга под брейкпоинты Тильды</div>
+                            <div class="step-time">&#9202; 8-14 часов (нов.) / 4-7 часов (опыт.)</div>
+                            <div class="step-resources">
+                                <div class="step-res">
+                                    <div class="mat-icon video">&#9654;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">Урок 3.2 — Как создавать адаптив на реальном примере</div>
+                                        <div class="mat-note">Пошаговый процесс создания адаптива</div>
+                                        <div class="mat-links">
+                                            <a href="https://youtu.be/nWXVRIBbdUM" target="_blank" class="yt">YouTube</a>
+                                            <a href="https://vkvideo.ru/video-199746853_456239461" target="_blank" class="vk">VK Video</a>
+                                            <a href="https://www.figma.com/design/zlBtmFe5vJzlP7TDvaF7uH/" target="_blank" class="fg">Figma</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step-res">
+                                    <div class="mat-icon video">&#9654;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">Как скопировать настройки сетки в Figma</div>
+                                        <div class="mat-note">Чтобы перенести сетку в свой файл</div>
+                                        <div class="mat-links">
+                                            <a href="https://youtu.be/o7-34JJJyFI" target="_blank" class="yt">YouTube</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step-res">
+                                    <div class="mat-icon figma">&#9670;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">Файл сеток (Урок 2.3)</div>
+                                        <div class="mat-note">Сетки для всех разрешений — скопируй нужные в свой проект</div>
+                                        <div class="mat-links">
+                                            <a href="https://www.figma.com/design/OEHi5ZPHx4KDdI7mTGfC8t/" target="_blank" class="fg">Figma</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Урок 3.4 — Components</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/FybTQy7ekIA" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239486" target="_blank" class="vk">VK Video</a>
-                                <a href="https://www.figma.com/design/TDgzJqztEflKSN7K5CoHFr/" target="_blank" class="fg">Figma</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Чайный урок 3.1 — Обратная связь по AL и Components</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/x2X7nSfVVkw" target="_blank" class="yt">YouTube (ч.1)</a>
-                                <a href="https://youtu.be/rnJ2skuGn90" target="_blank" class="yt">YouTube (ч.2)</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239520" target="_blank" class="vk">VK (ч.1)</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239521" target="_blank" class="vk">VK (ч.2)</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Чайный урок 3.2 — Отработка AL и Components (практика)</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/5j0qW03RkE8" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239519" target="_blank" class="vk">VK Video</a>
-                                <a href="https://www.figma.com/design/pFGINrhEAzALd2CAJk129i/" target="_blank" class="fg">Figma</a>
+                            <div class="hint-box">
+                                <b>Брейкпоинты Тильды (Zero Block):</b><br>
+                                &#8226; Десктоп: 1200px+ (твой основной макет на фрейме 1440px)<br>
+                                &#8226; <b>960px</b> — горизонтальный планшет<br>
+                                &#8226; <b>640px</b> — вертикальный планшет<br>
+                                &#8226; <b>480px</b> — горизонтальный смартфон<br>
+                                &#8226; <b>320px</b> — вертикальный смартфон<br><br>
+                                <b>Ctrl+G</b> — включить/выключить отображение сетки в Figma (если сетка не видна — нажми).<br><br>
+                                <b>Рекомендации:</b> не просто сжимай элементы — <b>перестраивай композицию</b>. Колонки на десктопе (3-4) на мобильном становятся одной. Шрифты уменьшай на 20-30%. Кнопки — не меньше 44px.
                             </div>
                         </div>
                     </div>
@@ -724,7 +719,7 @@ a.ot{background:rgba(22,163,74,.06);color:#16a34a;border:1px solid rgba(22,163,7
     </div>
 </div>
 
-<!-- ==================== НЕДЕЛЯ 4 ==================== -->
+<!-- ==================== ПРАКТИКА 4 (100%) ==================== -->
 <div class="week-section" id="w4">
     <div class="week-header">
         <div class="week-dot"></div>
@@ -735,179 +730,122 @@ a.ot{background:rgba(22,163,74,.06);color:#16a34a;border:1px solid rgba(22,163,7
         <div class="practice-head" onclick="toggleP(this.parentElement)">
             <div class="practice-num">П 4</div>
             <div class="practice-info">
-                <div class="p-label">Практика 4</div>
+                <div class="p-label">Практика 4 <span class="pct-badge">100% проекта</span></div>
                 <h3>Вёрстка лендинга на Тильде</h3>
                 <div class="practice-desc">Переносим готовый макет на Тильду, добавляем анимации, настраиваем и публикуем сайт.</div>
+                <div class="time-summary">
+                    <span class="time-tag">&#9202; Новичок: 10-18 часов</span>
+                    <span class="time-tag">&#9202; Опытный: 5-9 часов</span>
+                </div>
             </div>
             <span class="p-arrow">&#9660;</span>
         </div>
         <div class="practice-body">
             <div class="result-block">
                 <h4>Результат практики</h4>
-                <p><b>Опубликованный коммерческий лендинг</b> на Тильде с адаптивом и анимациями — первый кейс для портфолио! Также подключена политика конфиденциальности и оферта.</p>
+                <p><b>Опубликованный коммерческий лендинг</b> на Тильде с адаптивом и анимациями — первый кейс для портфолио! Подключена политика конфиденциальности и оферта.</p>
             </div>
 
-            <div class="task-desc">
-                <b>Задание:</b>
-                <ul>
-                    <li>Перенести десктоп-макет и адаптив на Тильду</li>
-                    <li>Добавить анимации (2-3 типа достаточно — не перебарщивай)</li>
-                    <li>Настроить сайт перед публикацией: политика конфиденциальности и оферта</li>
-                </ul>
-                <p style="margin-top:10px"><b>Советы:</b> используй Zero Block для кастомных блоков. Начинай с десктопной версии, затем настрой адаптив в редакторе Тильды. Картинки экспортируй из Figma в PNG или SVG.</p>
-            </div>
+            <div class="steps-block">
+                <h4>Что нужно сделать</h4>
 
-            <div class="materials">
-                <div class="mat-group">
-                    <div class="mat-group-title">Уроки — обязательно посмотреть перед практикой</div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Урок 4.1.1 — Перенос макета на Тильду</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/vrjksERxej4" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239464" target="_blank" class="vk">VK Video</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Урок 4.1.2 — Анимация на Тильде</div>
-                            <div class="mat-note">Базовая анимация + пошаговая (step-by-step)</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/TQ6C9gVRVXI" target="_blank" class="yt">Параллакс</a>
-                                <a href="https://youtu.be/RxBGt24yojI" target="_blank" class="yt">Появление</a>
-                                <a href="https://youtu.be/6n2rCo28Afo" target="_blank" class="yt">Фиксация</a>
-                                <a href="https://youtu.be/lDtfQaequ6A" target="_blank" class="yt">On Scroll</a>
-                                <a href="https://youtu.be/ViMuOCwxAjo" target="_blank" class="yt">Element on Screen</a>
-                                <a href="https://youtu.be/hwsu-KDdiIY" target="_blank" class="yt">Block on Screen</a>
-                                <a href="https://youtu.be/zIAtcblgonc" target="_blank" class="yt">On Click / Trigger</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239443" target="_blank" class="vk">VK Параллакс</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239445" target="_blank" class="vk">VK Появление</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239446" target="_blank" class="vk">VK Фиксация</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239447" target="_blank" class="vk">VK On Scroll</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Урок 4.1.3 — Настройка Тильды перед публикацией</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/O5n6ZSjnZDY" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239399" target="_blank" class="vk">VK Video</a>
+                <!-- Шаг 1: Перенести макет -->
+                <div class="step-item">
+                    <div class="step-top">
+                        <div class="step-num">1</div>
+                        <div class="step-main">
+                            <div class="step-text"><b>Перенеси макет на Тильду.</b> Начинай с десктопной версии, затем настрой адаптив в редакторе Тильды. Картинки экспортируй из Figma в PNG или SVG</div>
+                            <div class="step-time">&#9202; 6-10 часов (нов.) / 3-5 часов (опыт.)</div>
+                            <div class="step-resources">
+                                <div class="step-res">
+                                    <div class="mat-icon video">&#9654;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">Урок 4.1.1 — Перенос макета на Тильду</div>
+                                        <div class="mat-links">
+                                            <a href="https://youtu.be/vrjksERxej4" target="_blank" class="yt">YouTube</a>
+                                            <a href="https://vkvideo.ru/video-199746853_456239464" target="_blank" class="vk">VK Video</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="mat-group">
-                    <div class="mat-group-title">Материалы для выполнения</div>
-                    <div class="mat-item">
-                        <div class="mat-icon link">&#9734;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Шаблон политики конфиденциальности</div>
-                            <div class="mat-links">
-                                <a href="https://dancing-otter-b022bd.netlify.app/" target="_blank" class="ot">Открыть</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon link">&#9734;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Шаблон публичной оферты</div>
-                            <div class="mat-links">
-                                <a href="https://oferta-pro.netlify.app/" target="_blank" class="ot">Открыть</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mat-group">
-                    <div class="mat-group-title"><span class="bonus-label">Бонус</span> Дополнительные уроки по Тильде</div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Работа с HTML кодом в Тильде</div>
-                            <div class="mat-note">Скрипты и модификации</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/ez0UkIIqLWI" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239400" target="_blank" class="vk">VK Video</a>
-                                <a href="https://www.figma.com/design/Q9OwRpzNqU3hj5vqlouGJT/" target="_blank" class="fg">Figma</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Личный кабинет в Тильде</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/E-hhmqxOa9M" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239439" target="_blank" class="vk">VK Video</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Работа с блогом</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/awgtGYX-cLc" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239398" target="_blank" class="vk">VK Video</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Создание потоков</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/7agPQVNYi2U" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239440" target="_blank" class="vk">VK Video</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Форма в Zero блоке</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/kXqIiwPlOyU" target="_blank" class="yt">YouTube</a>
-                                <a href="https://vkvideo.ru/video-199746853_456239441" target="_blank" class="vk">VK Video</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon video">&#9654;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Доп. анимации: кнопка через триггер, фото по таймингу, фиксирование на дистанцию</div>
-                            <div class="mat-links">
-                                <a href="https://youtu.be/ZwRcwovYWaw" target="_blank" class="yt">Кнопка</a>
-                                <a href="https://youtu.be/tJfQpqZbBMI" target="_blank" class="yt">Фото</a>
-                                <a href="https://youtu.be/tNlLbhaNSWc" target="_blank" class="yt">Фиксация</a>
-                                <a href="https://youtu.be/0GUCC1OQaRI" target="_blank" class="yt">Иконка карты</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mat-item">
-                        <div class="mat-icon figma">&#9670;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Таблица: Аналоги Тильды</div>
-                            <div class="mat-links">
-                                <a href="https://www.figma.com/design/Sn11LQBxOsyTWrb0VxgoxZ/" target="_blank" class="fg">Открыть</a>
+
+                <!-- Шаг 2: Анимации -->
+                <div class="step-item">
+                    <div class="step-top">
+                        <div class="step-num">2</div>
+                        <div class="step-main">
+                            <div class="step-text"><b>Добавь анимации</b> (2-3 типа достаточно — не перебарщивай)</div>
+                            <div class="step-time">&#9202; 3-6 часов (нов.) / 1-3 часа (опыт.)</div>
+                            <div class="step-resources">
+                                <div class="step-res">
+                                    <div class="mat-icon video">&#9654;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">Урок 4.1.2 — Анимация на Тильде</div>
+                                        <div class="mat-note">Базовая анимация + пошаговая (step-by-step)</div>
+                                        <div class="mat-links">
+                                            <a href="https://youtu.be/TQ6C9gVRVXI" target="_blank" class="yt">Параллакс</a>
+                                            <a href="https://youtu.be/RxBGt24yojI" target="_blank" class="yt">Появление</a>
+                                            <a href="https://youtu.be/6n2rCo28Afo" target="_blank" class="yt">Фиксация</a>
+                                            <a href="https://youtu.be/lDtfQaequ6A" target="_blank" class="yt">On Scroll</a>
+                                            <a href="https://youtu.be/ViMuOCwxAjo" target="_blank" class="yt">Element on Screen</a>
+                                            <a href="https://youtu.be/hwsu-KDdiIY" target="_blank" class="yt">Block on Screen</a>
+                                            <a href="https://youtu.be/zIAtcblgonc" target="_blank" class="yt">On Click / Trigger</a>
+                                        </div>
+                                        <div class="mat-links" style="margin-top:4px">
+                                            <a href="https://vkvideo.ru/video-199746853_456239443" target="_blank" class="vk">VK Параллакс</a>
+                                            <a href="https://vkvideo.ru/video-199746853_456239445" target="_blank" class="vk">VK Появление</a>
+                                            <a href="https://vkvideo.ru/video-199746853_456239446" target="_blank" class="vk">VK Фиксация</a>
+                                            <a href="https://vkvideo.ru/video-199746853_456239447" target="_blank" class="vk">VK On Scroll</a>
+                                            <a href="https://vkvideo.ru/video-199746853_456239448" target="_blank" class="vk">VK Element</a>
+                                            <a href="https://vkvideo.ru/video-199746853_456239465" target="_blank" class="vk">VK Block</a>
+                                            <a href="https://vkvideo.ru/video-199746853_456239413" target="_blank" class="vk">VK Click</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="mat-group">
-                    <div class="mat-group-title"><span class="bonus-label">Доп. практика</span> Копирование сайта по видео</div>
-                    <div class="mat-item">
-                        <div class="mat-icon info">&#9432;</div>
-                        <div class="mat-body">
-                            <div class="mat-title">Практика 4.1 — Копирование сайта по видео в Тильде</div>
-                            <div class="mat-note">Необязательная практика, не требует проверки. Перенесите сайт на Тильду по обучающему уроку. Не выкладывайте в портфолио — это коммерческая работа.</div>
-                            <div class="mat-links">
-                                <a href="https://www.figma.com/design/yqvsWU1KWsz5lQAVtETb1Y/" target="_blank" class="fg">Исходник в Figma</a>
-                                <a href="https://docs.google.com/document/d/1WX6xz4CiK-T1RLOWIX_J5Go77T7rOcCbw8Ze0qdv4v4/" target="_blank" class="ot">HTML-коды к уроку</a>
+
+                <!-- Шаг 3: Настройка и публикация -->
+                <div class="step-item">
+                    <div class="step-top">
+                        <div class="step-num">3</div>
+                        <div class="step-main">
+                            <div class="step-text"><b>Настрой сайт и опубликуй.</b> Подключи политику конфиденциальности, оферту, проверь все ссылки и формы</div>
+                            <div class="step-time">&#9202; 1-2 часа (нов.) / 30 мин — 1 час (опыт.)</div>
+                            <div class="step-resources">
+                                <div class="step-res">
+                                    <div class="mat-icon video">&#9654;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">Урок 4.1.3 — Настройка Тильды перед публикацией</div>
+                                        <div class="mat-links">
+                                            <a href="https://youtu.be/O5n6ZSjnZDY" target="_blank" class="yt">YouTube</a>
+                                            <a href="https://vkvideo.ru/video-199746853_456239399" target="_blank" class="vk">VK Video</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step-res">
+                                    <div class="mat-icon link">&#9734;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">Шаблон политики конфиденциальности</div>
+                                        <div class="mat-links">
+                                            <a href="https://dancing-otter-b022bd.netlify.app/" target="_blank" class="ot">Открыть</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="step-res">
+                                    <div class="mat-icon link">&#9734;</div>
+                                    <div class="mat-body">
+                                        <div class="mat-title">Шаблон публичной оферты</div>
+                                        <div class="mat-links">
+                                            <a href="https://oferta-pro.netlify.app/" target="_blank" class="ot">Открыть</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -948,7 +886,7 @@ function toggleP(el){
 }
 function toggleHelp(btn){
     event.stopPropagation();
-    const content = btn.closest('.step-text, .task-desc, li').querySelector('.help-content');
+    const content = btn.closest('.step-main, .step-text, li').querySelector('.help-content');
     if(content) content.classList.toggle('open');
 }
 
