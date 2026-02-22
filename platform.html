@@ -20,6 +20,7 @@
   --text: #1a1a2e;
   --muted: #6b7280;
   --danger: #dc2626;
+  --orange: #ea580c;
 }
 
 body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; -webkit-font-smoothing: antialiased; }
@@ -47,7 +48,6 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
   text-align: center;
   margin-bottom: 32px;
 }
-
 .login-logo h1 {
   font-size: 1.6rem;
   font-weight: 900;
@@ -57,12 +57,7 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
   -webkit-text-fill-color: transparent;
   margin-bottom: 6px;
 }
-
-.login-logo p {
-  color: var(--muted);
-  font-size: .82rem;
-  font-weight: 500;
-}
+.login-logo p { color: var(--muted); font-size: .82rem; font-weight: 500; }
 
 .field { margin-bottom: 16px; }
 .field label { display: block; font-size: .75rem; font-weight: 700; color: var(--text); margin-bottom: 6px; text-transform: uppercase; letter-spacing: .5px; }
@@ -97,14 +92,7 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
 .btn-primary:hover { background: #6d28d9; }
 .btn-primary:disabled { background: #a78bfa; cursor: not-allowed; }
 
-.login-error {
-  color: var(--danger);
-  font-size: .8rem;
-  font-weight: 600;
-  margin-top: 10px;
-  text-align: center;
-  min-height: 20px;
-}
+.login-error { color: var(--danger); font-size: .8rem; font-weight: 600; margin-top: 10px; text-align: center; min-height: 20px; }
 
 /* ── PLATFORM ── */
 #platform-screen { display: none; }
@@ -122,6 +110,7 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
   z-index: 100;
 }
 
+.header-left { display: flex; align-items: center; gap: 12px; }
 .header-title {
   font-size: 1rem;
   font-weight: 900;
@@ -130,6 +119,17 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* Role badge */
+.role-badge {
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .3px;
+}
+.role-admin { background: rgba(124,58,237,.12); color: var(--purple); border: 1px solid var(--purple-border); }
+.role-student { background: rgba(16,185,129,.1); color: #059669; border: 1px solid rgba(16,185,129,.25); }
 
 .header-right { display: flex; align-items: center; gap: 10px; }
 
@@ -164,7 +164,7 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
 .main { max-width: 800px; margin: 0 auto; padding: 32px 20px 80px; }
 
 /* Tabs */
-.tabs { display: flex; gap: 6px; margin-bottom: 24px; }
+.tabs { display: flex; gap: 6px; margin-bottom: 24px; flex-wrap: wrap; }
 .tab {
   padding: 8px 18px;
   border-radius: 8px;
@@ -179,15 +179,7 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
 }
 .tab:hover { border-color: var(--purple-border); color: var(--purple); }
 .tab.active { border-color: var(--purple); background: var(--purple-light); color: var(--purple); }
-
-.tab-count {
-  display: inline-block;
-  background: var(--border);
-  border-radius: 20px;
-  padding: 1px 7px;
-  font-size: .68rem;
-  margin-left: 4px;
-}
+.tab-count { display: inline-block; background: var(--border); border-radius: 20px; padding: 1px 7px; font-size: .68rem; margin-left: 4px; }
 .tab.active .tab-count { background: var(--purple-border); }
 
 /* Cards */
@@ -201,6 +193,13 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
   transition: border-color .15s;
 }
 .card:hover { border-color: #d1d5db; }
+
+/* Hidden card — admin only, dashed border */
+.card.is-hidden {
+  border-style: dashed;
+  opacity: .65;
+}
+.card.is-hidden:hover { border-color: #9ca3af; opacity: .8; }
 
 .card-header {
   padding: 16px 20px;
@@ -222,36 +221,22 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
   letter-spacing: .5px;
 }
 .badge-lesson { background: rgba(124,58,237,.1); color: var(--purple); }
-.badge-practice { background: rgba(234,88,12,.1); color: #ea580c; }
+.badge-practice { background: rgba(234,88,12,.1); color: var(--orange); }
+.badge-hidden { background: #f3f4f6; color: #9ca3af; margin-left: 4px; }
 
 .card-meta { flex: 1; min-width: 0; }
 .card-title { font-size: .95rem; font-weight: 700; color: var(--text); line-height: 1.35; }
 .card-date { font-size: .72rem; color: var(--muted); margin-top: 3px; font-weight: 500; }
-
 .card-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 6px; }
-.tag {
-  padding: 2px 8px;
-  background: #f3f4f6;
-  border-radius: 5px;
-  font-size: .67rem;
-  font-weight: 600;
-  color: #4b5563;
-}
+.tag { padding: 2px 8px; background: #f3f4f6; border-radius: 5px; font-size: .67rem; font-weight: 600; color: #4b5563; }
 
-.card-toggle {
-  flex-shrink: 0;
-  color: var(--muted);
-  font-size: .75rem;
-  margin-top: 2px;
-  transition: transform .2s;
-}
+.card-toggle { flex-shrink: 0; color: var(--muted); font-size: .75rem; margin-top: 2px; transition: transform .2s; }
 .card.expanded .card-toggle { transform: rotate(180deg); }
 
 .card-body {
   display: none;
   padding: 0 20px 18px;
   border-top: 1px solid var(--border);
-  margin: 0 -1px;
 }
 .card.expanded .card-body { display: block; }
 
@@ -264,7 +249,7 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
   word-break: break-word;
 }
 
-.card-actions { display: flex; gap: 8px; margin-top: 14px; padding-top: 12px; border-top: 1px solid #f3f4f6; }
+.card-actions { display: flex; gap: 8px; margin-top: 14px; padding-top: 12px; border-top: 1px solid #f3f4f6; flex-wrap: wrap; }
 .btn-sm {
   padding: 5px 12px;
   border-radius: 6px;
@@ -277,15 +262,15 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
 }
 .btn-edit { background: #f9fafb; border-color: var(--border); color: #374151; }
 .btn-edit:hover { border-color: var(--purple); color: var(--purple); }
-.btn-delete { background: none; border-color: transparent; color: #9ca3af; }
+.btn-hide { background: #f9fafb; border-color: var(--border); color: #374151; }
+.btn-hide:hover { border-color: #f59e0b; color: #d97706; }
+.btn-show { background: rgba(245,158,11,.08); border-color: rgba(245,158,11,.3); color: #d97706; }
+.btn-show:hover { border-color: #f59e0b; background: rgba(245,158,11,.14); }
+.btn-delete { background: none; border-color: transparent; color: #9ca3af; margin-left: auto; }
 .btn-delete:hover { color: var(--danger); }
 
 /* Empty state */
-.empty {
-  text-align: center;
-  padding: 60px 20px;
-  color: var(--muted);
-}
+.empty { text-align: center; padding: 60px 20px; color: var(--muted); }
 .empty-icon { font-size: 2.5rem; margin-bottom: 12px; }
 .empty h3 { font-size: .95rem; font-weight: 700; color: #374151; margin-bottom: 6px; }
 .empty p { font-size: .82rem; }
@@ -316,16 +301,7 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
 
 .modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
 .modal-title { font-size: 1.1rem; font-weight: 900; }
-.modal-close {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  color: var(--muted);
-  cursor: pointer;
-  padding: 4px 8px;
-  line-height: 1;
-  border-radius: 6px;
-}
+.modal-close { background: none; border: none; font-size: 1.2rem; color: var(--muted); cursor: pointer; padding: 4px 8px; line-height: 1; border-radius: 6px; }
 .modal-close:hover { background: #f3f4f6; color: var(--text); }
 
 .form-row { margin-bottom: 16px; }
@@ -343,10 +319,7 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
   outline: none;
   resize: vertical;
 }
-.form-input:focus, .form-select:focus, .form-textarea:focus {
-  border-color: var(--purple);
-  background: #fff;
-}
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--purple); background: #fff; }
 .form-textarea { min-height: 160px; line-height: 1.6; }
 .form-hint { font-size: .72rem; color: var(--muted); margin-top: 4px; }
 
@@ -380,10 +353,7 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
 .btn-save:hover { background: #6d28d9; }
 
 /* Search */
-.search-bar {
-  position: relative;
-  margin-bottom: 20px;
-}
+.search-bar { position: relative; margin-bottom: 20px; }
 .search-bar input {
   width: 100%;
   padding: 10px 14px 10px 38px;
@@ -397,15 +367,7 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
   transition: border-color .15s;
 }
 .search-bar input:focus { border-color: var(--purple); }
-.search-icon {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--muted);
-  font-size: .9rem;
-  pointer-events: none;
-}
+.search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: .9rem; pointer-events: none; }
 </style>
 </head>
 <body>
@@ -415,7 +377,7 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
   <div class="login-card">
     <div class="login-logo">
       <h1>Мои уроки</h1>
-      <p>Платформа личных практик и обучения</p>
+      <p>Платформа практик и обучения</p>
     </div>
     <div class="field">
       <label>Пароль</label>
@@ -429,7 +391,10 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
 <!-- PLATFORM -->
 <div id="platform-screen">
   <header class="header">
-    <span class="header-title">Мои уроки и практики</span>
+    <div class="header-left">
+      <span class="header-title">Мои уроки и практики</span>
+      <span class="role-badge" id="role-badge"></span>
+    </div>
     <div class="header-right">
       <button class="btn-add" id="add-btn">+ Добавить</button>
       <button class="btn-logout" id="logout-btn">Выйти</button>
@@ -452,7 +417,7 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
   </main>
 </div>
 
-<!-- MODAL -->
+<!-- MODAL (admin only) -->
 <div class="modal-overlay" id="modal">
   <div class="modal">
     <div class="modal-header">
@@ -492,11 +457,14 @@ body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color
 </div>
 
 <script>
-// ── CONFIG ──
-// Смени пароль: в консоли браузера выполни
-//   await hashPassword('новый_пароль')
-// и замени значение PASSWORD_HASH ниже
-const PASSWORD_HASH = 'ef92b778bafe771207889657c6f0f9aa9b4bf2da17cdfa25a80b6cce56a9abb1'; // admin123
+// ══════════════════════════════════════════
+//  ПАРОЛИ
+//  Чтобы сменить пароль, в консоли браузера:
+//    await hashPassword('новый_пароль')
+//  и замени нужный хэш ниже.
+// ══════════════════════════════════════════
+const ADMIN_HASH   = 'ef92b778bafe771207889657c6f0f9aa9b4bf2da17cdfa25a80b6cce56a9abb1'; // admin123
+const STUDENT_HASH = '703b0a3d6ad75b649a28adde7d83c6251da457549263bc7ff45ec709b0a8448b'; // student123
 
 const STORAGE_KEY = 'learning_platform_v1';
 const SESSION_KEY = 'learning_platform_session';
@@ -512,8 +480,7 @@ function genId() {
 }
 
 function formatDate(iso) {
-  const d = new Date(iso);
-  return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+  return new Date(iso).toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
 }
 
 // ── STORAGE ──
@@ -521,10 +488,7 @@ function loadItems() {
   try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
   catch { return []; }
 }
-
-function saveItems(items) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-}
+function saveItems(arr) { localStorage.setItem(STORAGE_KEY, JSON.stringify(arr)); }
 
 // ── STATE ──
 let items = loadItems();
@@ -533,24 +497,29 @@ let searchQuery = '';
 let editingId = null;
 
 // ── AUTH ──
-function isLoggedIn() {
-  return sessionStorage.getItem(SESSION_KEY) === 'ok';
+function getRole() {
+  try { return JSON.parse(sessionStorage.getItem(SESSION_KEY))?.role || null; }
+  catch { return null; }
 }
+function isAdmin() { return getRole() === 'admin'; }
+function isLoggedIn() { return getRole() !== null; }
 
 async function tryLogin() {
-  const pw = document.getElementById('password-input').value;
+  const pw  = document.getElementById('password-input').value;
   const err = document.getElementById('login-error');
   const btn = document.getElementById('login-btn');
-
   if (!pw) { err.textContent = 'Введите пароль'; return; }
 
   btn.disabled = true;
   btn.textContent = 'Проверяю...';
 
   const hash = await hashPassword(pw);
+  let role = null;
+  if (hash === ADMIN_HASH)   role = 'admin';
+  if (hash === STUDENT_HASH) role = 'student';
 
-  if (hash === PASSWORD_HASH) {
-    sessionStorage.setItem(SESSION_KEY, 'ok');
+  if (role) {
+    sessionStorage.setItem(SESSION_KEY, JSON.stringify({ role }));
     showPlatform();
   } else {
     err.textContent = 'Неверный пароль';
@@ -569,18 +538,37 @@ function logout() {
 function showLogin() {
   document.getElementById('platform-screen').style.display = 'none';
   document.getElementById('login-screen').style.display = 'flex';
-  document.getElementById('password-input').focus();
+  setTimeout(() => document.getElementById('password-input').focus(), 50);
 }
 
 function showPlatform() {
   document.getElementById('login-screen').style.display = 'none';
   document.getElementById('platform-screen').style.display = 'block';
+
+  // Role badge
+  const badge = document.getElementById('role-badge');
+  if (isAdmin()) {
+    badge.textContent = 'Администратор';
+    badge.className = 'role-badge role-admin';
+    document.getElementById('add-btn').style.display = 'inline-block';
+  } else {
+    badge.textContent = 'Ученик';
+    badge.className = 'role-badge role-student';
+    document.getElementById('add-btn').style.display = 'none';
+  }
+
   renderAll();
 }
 
 // ── RENDER ──
+function visibleToRole(item) {
+  // Admin sees everything; student only sees non-hidden
+  return isAdmin() || !item.hidden;
+}
+
 function getFiltered() {
   return items.filter(item => {
+    if (!visibleToRole(item)) return false;
     const matchTab = activeTab === 'all' || item.type === activeTab;
     if (!matchTab) return false;
     if (!searchQuery) return true;
@@ -597,56 +585,61 @@ function renderAll() {
 }
 
 function updateCounts() {
-  document.getElementById('count-all').textContent = items.length;
-  document.getElementById('count-lesson').textContent = items.filter(i => i.type === 'lesson').length;
-  document.getElementById('count-practice').textContent = items.filter(i => i.type === 'practice').length;
+  const visible = items.filter(i => visibleToRole(i));
+  document.getElementById('count-all').textContent     = visible.length;
+  document.getElementById('count-lesson').textContent   = visible.filter(i => i.type === 'lesson').length;
+  document.getElementById('count-practice').textContent = visible.filter(i => i.type === 'practice').length;
 }
 
 function renderCards() {
-  const list = document.getElementById('cards-list');
+  const list     = document.getElementById('cards-list');
   const filtered = getFiltered();
+  const admin    = isAdmin();
 
   if (filtered.length === 0) {
-    list.innerHTML = `
-      <div class="empty">
-        <div class="empty-icon">${searchQuery ? '🔍' : (activeTab === 'lesson' ? '📖' : activeTab === 'practice' ? '✍️' : '📋')}</div>
-        <h3>${searchQuery ? 'Ничего не найдено' : 'Пока нет материалов'}</h3>
-        <p>${searchQuery ? 'Попробуй другой запрос' : 'Нажми «+ Добавить», чтобы создать первый'}</p>
-      </div>`;
+    const icon = searchQuery ? '🔍' : (activeTab === 'lesson' ? '📖' : activeTab === 'practice' ? '✍️' : '📋');
+    const head = searchQuery ? 'Ничего не найдено' : 'Пока нет материалов';
+    const sub  = searchQuery ? 'Попробуй другой запрос' : (admin ? 'Нажми «+ Добавить», чтобы создать первый' : 'Материалы ещё не добавлены');
+    list.innerHTML = `<div class="empty"><div class="empty-icon">${icon}</div><h3>${head}</h3><p>${sub}</p></div>`;
     return;
   }
 
-  // Sort: newest first
   const sorted = [...filtered].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   list.innerHTML = sorted.map(item => {
-    const badge = item.type === 'lesson'
+    const typeBadge = item.type === 'lesson'
       ? '<span class="card-type-badge badge-lesson">Урок</span>'
       : '<span class="card-type-badge badge-practice">Практика</span>';
+
+    const hiddenBadge = (admin && item.hidden)
+      ? '<span class="card-type-badge badge-hidden">Скрыто</span>'
+      : '';
 
     const tags = (item.tags || []).length > 0
       ? `<div class="card-tags">${item.tags.map(t => `<span class="tag">${escHtml(t)}</span>`).join('')}</div>`
       : '';
 
-    const content = item.content
+    // Admin actions
+    const adminActions = admin ? `
+      <div class="card-actions">
+        <button class="btn-sm btn-edit" onclick="openEdit(event,'${item.id}')">Редактировать</button>
+        ${item.hidden
+          ? `<button class="btn-sm btn-show" onclick="toggleHide(event,'${item.id}')">Показать ученикам</button>`
+          : `<button class="btn-sm btn-hide" onclick="toggleHide(event,'${item.id}')">Скрыть от учеников</button>`}
+        <button class="btn-sm btn-delete" onclick="deleteItem(event,'${item.id}')">Удалить</button>
+      </div>` : '';
+
+    const cardBody = (item.content || admin)
       ? `<div class="card-body">
-           <div class="card-content">${escHtml(item.content)}</div>
-           <div class="card-actions">
-             <button class="btn-sm btn-edit" onclick="openEdit('${item.id}')">Редактировать</button>
-             <button class="btn-sm btn-delete" onclick="deleteItem('${item.id}')">Удалить</button>
-           </div>
+           ${item.content ? `<div class="card-content">${escHtml(item.content)}</div>` : ''}
+           ${adminActions}
          </div>`
-      : `<div class="card-body">
-           <div class="card-actions">
-             <button class="btn-sm btn-edit" onclick="openEdit('${item.id}')">Редактировать</button>
-             <button class="btn-sm btn-delete" onclick="deleteItem('${item.id}')">Удалить</button>
-           </div>
-         </div>`;
+      : '';
 
     return `
-      <div class="card" id="card-${item.id}" onclick="toggleCard('${item.id}')">
+      <div class="card${item.hidden ? ' is-hidden' : ''}" id="card-${item.id}" onclick="toggleCard(event,'${item.id}')">
         <div class="card-header">
-          ${badge}
+          ${typeBadge}${hiddenBadge}
           <div class="card-meta">
             <div class="card-title">${escHtml(item.title)}</div>
             <div class="card-date">${formatDate(item.createdAt)}</div>
@@ -654,51 +647,61 @@ function renderCards() {
           </div>
           <span class="card-toggle">▼</span>
         </div>
-        ${content}
+        ${cardBody}
       </div>`;
   }).join('');
 }
 
 function escHtml(str) {
   return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
-function toggleCard(id) {
-  const card = document.getElementById('card-' + id);
-  // Don't toggle if clicked on a button inside
-  card.classList.toggle('expanded');
+function toggleCard(e, id) {
+  if (e.target.closest('button')) return;
+  document.getElementById('card-' + id).classList.toggle('expanded');
 }
 
 // ── CRUD ──
 function openAdd() {
+  if (!isAdmin()) return;
   editingId = null;
   document.getElementById('modal-title').textContent = 'Новый материал';
-  document.getElementById('form-type').value = 'lesson';
-  document.getElementById('form-title').value = '';
+  document.getElementById('form-type').value    = 'lesson';
+  document.getElementById('form-title').value   = '';
   document.getElementById('form-content').value = '';
-  document.getElementById('form-tags').value = '';
+  document.getElementById('form-tags').value    = '';
   openModal();
 }
 
-function openEdit(id) {
-  event.stopPropagation();
+function openEdit(e, id) {
+  if (!isAdmin()) return;
+  e.stopPropagation();
   const item = items.find(i => i.id === id);
   if (!item) return;
   editingId = id;
   document.getElementById('modal-title').textContent = 'Редактировать';
-  document.getElementById('form-type').value = item.type;
-  document.getElementById('form-title').value = item.title;
+  document.getElementById('form-type').value    = item.type;
+  document.getElementById('form-title').value   = item.title;
   document.getElementById('form-content').value = item.content || '';
-  document.getElementById('form-tags').value = (item.tags || []).join(', ');
+  document.getElementById('form-tags').value    = (item.tags || []).join(', ');
   openModal();
 }
 
-function deleteItem(id) {
-  event.stopPropagation();
+function toggleHide(e, id) {
+  if (!isAdmin()) return;
+  e.stopPropagation();
+  const idx = items.findIndex(i => i.id === id);
+  if (idx === -1) return;
+  items[idx] = { ...items[idx], hidden: !items[idx].hidden };
+  saveItems(items);
+  renderAll();
+}
+
+function deleteItem(e, id) {
+  if (!isAdmin()) return;
+  e.stopPropagation();
   if (!confirm('Удалить этот материал?')) return;
   items = items.filter(i => i.id !== id);
   saveItems(items);
@@ -706,36 +709,35 @@ function deleteItem(id) {
 }
 
 function saveItem() {
-  const title = document.getElementById('form-title').value.trim();
-  if (!title) {
-    document.getElementById('form-title').focus();
-    document.getElementById('form-title').style.borderColor = 'var(--danger)';
-    return;
-  }
-  document.getElementById('form-title').style.borderColor = '';
+  if (!isAdmin()) return;
+  const titleEl = document.getElementById('form-title');
+  const title   = titleEl.value.trim();
+  if (!title) { titleEl.style.borderColor = 'var(--danger)'; titleEl.focus(); return; }
+  titleEl.style.borderColor = '';
 
-  const tagsRaw = document.getElementById('form-tags').value;
-  const tags = tagsRaw.split(',').map(t => t.trim()).filter(Boolean);
+  const tags = document.getElementById('form-tags').value
+    .split(',').map(t => t.trim()).filter(Boolean);
 
   if (editingId) {
     const idx = items.findIndex(i => i.id === editingId);
     if (idx !== -1) {
       items[idx] = {
         ...items[idx],
-        type: document.getElementById('form-type').value,
+        type:      document.getElementById('form-type').value,
         title,
-        content: document.getElementById('form-content').value.trim(),
+        content:   document.getElementById('form-content').value.trim(),
         tags,
         updatedAt: new Date().toISOString(),
       };
     }
   } else {
     items.push({
-      id: genId(),
-      type: document.getElementById('form-type').value,
+      id:        genId(),
+      type:      document.getElementById('form-type').value,
       title,
-      content: document.getElementById('form-content').value.trim(),
+      content:   document.getElementById('form-content').value.trim(),
       tags,
+      hidden:    false,
       createdAt: new Date().toISOString(),
     });
   }
@@ -750,7 +752,6 @@ function openModal() {
   document.getElementById('modal').classList.add('open');
   setTimeout(() => document.getElementById('form-title').focus(), 50);
 }
-
 function closeModal() {
   document.getElementById('modal').classList.remove('open');
   editingId = null;
@@ -758,24 +759,20 @@ function closeModal() {
 
 // ── EVENTS ──
 document.addEventListener('DOMContentLoaded', () => {
-  // Auth
   if (isLoggedIn()) {
     showPlatform();
   } else {
     showLogin();
   }
 
-  // Login
   document.getElementById('login-btn').addEventListener('click', tryLogin);
   document.getElementById('password-input').addEventListener('keydown', e => {
     if (e.key === 'Enter') tryLogin();
   });
 
-  // Platform
   document.getElementById('logout-btn').addEventListener('click', logout);
   document.getElementById('add-btn').addEventListener('click', openAdd);
 
-  // Tabs
   document.querySelectorAll('.tab').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
@@ -785,24 +782,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Search
   document.getElementById('search-input').addEventListener('input', e => {
     searchQuery = e.target.value.trim();
     renderCards();
   });
 
-  // Modal
   document.getElementById('modal-close').addEventListener('click', closeModal);
   document.getElementById('modal-cancel').addEventListener('click', closeModal);
   document.getElementById('modal-save').addEventListener('click', saveItem);
   document.getElementById('modal').addEventListener('click', e => {
     if (e.target === document.getElementById('modal')) closeModal();
   });
-
-  // Esc closes modal
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeModal();
-  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 });
 </script>
 </body>
