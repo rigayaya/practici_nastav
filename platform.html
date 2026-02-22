@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мои уроки и практики</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --purple: #7c3aed;
+  --purple-light: rgba(124,58,237,.08);
+  --purple-border: rgba(124,58,237,.25);
+  --pink: #db2777;
+  --bg: #f8f8fc;
+  --card: #fff;
+  --border: #e5e7eb;
+  --text: #1a1a2e;
+  --muted: #6b7280;
+  --danger: #dc2626;
+}
+
+body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; -webkit-font-smoothing: antialiased; }
+
+/* ── LOGIN ── */
+#login-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-card {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 380px;
+  width: 100%;
+  box-shadow: 0 4px 32px rgba(0,0,0,.08);
+  border: 1.5px solid var(--border);
+}
+
+.login-logo {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.login-logo h1 {
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: -.03em;
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 6px;
+}
+
+.login-logo p {
+  color: var(--muted);
+  font-size: .82rem;
+  font-weight: 500;
+}
+
+.field { margin-bottom: 16px; }
+.field label { display: block; font-size: .75rem; font-weight: 700; color: var(--text); margin-bottom: 6px; text-transform: uppercase; letter-spacing: .5px; }
+.field input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: .88rem;
+  font-family: inherit;
+  color: var(--text);
+  background: #fafafa;
+  transition: border-color .15s;
+  outline: none;
+}
+.field input:focus { border-color: var(--purple); background: #fff; }
+
+.btn-primary {
+  width: 100%;
+  padding: 13px;
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: .88rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background .15s;
+  margin-top: 4px;
+}
+.btn-primary:hover { background: #6d28d9; }
+.btn-primary:disabled { background: #a78bfa; cursor: not-allowed; }
+
+.login-error {
+  color: var(--danger);
+  font-size: .8rem;
+  font-weight: 600;
+  margin-top: 10px;
+  text-align: center;
+  min-height: 20px;
+}
+
+/* ── PLATFORM ── */
+#platform-screen { display: none; }
+
+.header {
+  background: #fff;
+  border-bottom: 1.5px solid var(--border);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-title {
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: -.02em;
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header-right { display: flex; align-items: center; gap: 10px; }
+
+.btn-add {
+  padding: 7px 16px;
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: .78rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background .15s;
+}
+.btn-add:hover { background: #6d28d9; }
+
+.btn-logout {
+  padding: 7px 12px;
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all .15s;
+}
+.btn-logout:hover { border-color: var(--danger); color: var(--danger); }
+
+.main { max-width: 800px; margin: 0 auto; padding: 32px 20px 80px; }
+
+/* Tabs */
+.tabs { display: flex; gap: 6px; margin-bottom: 24px; }
+.tab {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: #fff;
+  color: var(--muted);
+  font-size: .8rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all .15s;
+}
+.tab:hover { border-color: var(--purple-border); color: var(--purple); }
+.tab.active { border-color: var(--purple); background: var(--purple-light); color: var(--purple); }
+
+.tab-count {
+  display: inline-block;
+  background: var(--border);
+  border-radius: 20px;
+  padding: 1px 7px;
+  font-size: .68rem;
+  margin-left: 4px;
+}
+.tab.active .tab-count { background: var(--purple-border); }
+
+/* Cards */
+.cards-list { display: flex; flex-direction: column; gap: 12px; }
+
+.card {
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color .15s;
+}
+.card:hover { border-color: #d1d5db; }
+
+.card-header {
+  padding: 16px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.card-type-badge {
+  flex-shrink: 0;
+  margin-top: 1px;
+  padding: 3px 9px;
+  border-radius: 6px;
+  font-size: .65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+.badge-lesson { background: rgba(124,58,237,.1); color: var(--purple); }
+.badge-practice { background: rgba(234,88,12,.1); color: #ea580c; }
+
+.card-meta { flex: 1; min-width: 0; }
+.card-title { font-size: .95rem; font-weight: 700; color: var(--text); line-height: 1.35; }
+.card-date { font-size: .72rem; color: var(--muted); margin-top: 3px; font-weight: 500; }
+
+.card-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 6px; }
+.tag {
+  padding: 2px 8px;
+  background: #f3f4f6;
+  border-radius: 5px;
+  font-size: .67rem;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.card-toggle {
+  flex-shrink: 0;
+  color: var(--muted);
+  font-size: .75rem;
+  margin-top: 2px;
+  transition: transform .2s;
+}
+.card.expanded .card-toggle { transform: rotate(180deg); }
+
+.card-body {
+  display: none;
+  padding: 0 20px 18px;
+  border-top: 1px solid var(--border);
+  margin: 0 -1px;
+}
+.card.expanded .card-body { display: block; }
+
+.card-content {
+  padding-top: 14px;
+  font-size: .88rem;
+  line-height: 1.7;
+  color: #374151;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.card-actions { display: flex; gap: 8px; margin-top: 14px; padding-top: 12px; border-top: 1px solid #f3f4f6; }
+.btn-sm {
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: .73rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  border: 1.5px solid transparent;
+  transition: all .15s;
+}
+.btn-edit { background: #f9fafb; border-color: var(--border); color: #374151; }
+.btn-edit:hover { border-color: var(--purple); color: var(--purple); }
+.btn-delete { background: none; border-color: transparent; color: #9ca3af; }
+.btn-delete:hover { color: var(--danger); }
+
+/* Empty state */
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--muted);
+}
+.empty-icon { font-size: 2.5rem; margin-bottom: 12px; }
+.empty h3 { font-size: .95rem; font-weight: 700; color: #374151; margin-bottom: 6px; }
+.empty p { font-size: .82rem; }
+
+/* ── MODAL ── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.modal-overlay.open { display: flex; }
+
+.modal {
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px;
+  max-width: 520px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,.18);
+}
+
+.modal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+.modal-title { font-size: 1.1rem; font-weight: 900; }
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+  border-radius: 6px;
+}
+.modal-close:hover { background: #f3f4f6; color: var(--text); }
+
+.form-row { margin-bottom: 16px; }
+.form-label { display: block; font-size: .75rem; font-weight: 700; color: var(--text); margin-bottom: 6px; text-transform: uppercase; letter-spacing: .5px; }
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 10px 13px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: .88rem;
+  font-family: inherit;
+  color: var(--text);
+  background: #fafafa;
+  transition: border-color .15s;
+  outline: none;
+  resize: vertical;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--purple);
+  background: #fff;
+}
+.form-textarea { min-height: 160px; line-height: 1.6; }
+.form-hint { font-size: .72rem; color: var(--muted); margin-top: 4px; }
+
+.modal-footer { display: flex; gap: 10px; margin-top: 24px; justify-content: flex-end; }
+.btn-secondary {
+  padding: 10px 20px;
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: .84rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all .15s;
+}
+.btn-secondary:hover { border-color: #9ca3af; color: var(--text); }
+
+.btn-save {
+  padding: 10px 24px;
+  background: var(--purple);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: .84rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background .15s;
+}
+.btn-save:hover { background: #6d28d9; }
+
+/* Search */
+.search-bar {
+  position: relative;
+  margin-bottom: 20px;
+}
+.search-bar input {
+  width: 100%;
+  padding: 10px 14px 10px 38px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: .86rem;
+  font-family: inherit;
+  color: var(--text);
+  background: #fff;
+  outline: none;
+  transition: border-color .15s;
+}
+.search-bar input:focus { border-color: var(--purple); }
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: .9rem;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo">
+      <h1>Мои уроки</h1>
+      <p>Платформа личных практик и обучения</p>
+    </div>
+    <div class="field">
+      <label>Пароль</label>
+      <input type="password" id="password-input" placeholder="Введите пароль" autocomplete="current-password">
+    </div>
+    <button class="btn-primary" id="login-btn">Войти</button>
+    <div class="login-error" id="login-error"></div>
+  </div>
+</div>
+
+<!-- PLATFORM -->
+<div id="platform-screen">
+  <header class="header">
+    <span class="header-title">Мои уроки и практики</span>
+    <div class="header-right">
+      <button class="btn-add" id="add-btn">+ Добавить</button>
+      <button class="btn-logout" id="logout-btn">Выйти</button>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="search-bar">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" placeholder="Поиск по заголовку или тегам...">
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="all">Все <span class="tab-count" id="count-all">0</span></button>
+      <button class="tab" data-tab="lesson">Уроки <span class="tab-count" id="count-lesson">0</span></button>
+      <button class="tab" data-tab="practice">Практики <span class="tab-count" id="count-practice">0</span></button>
+    </div>
+
+    <div class="cards-list" id="cards-list"></div>
+  </main>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="modal-title">Новый материал</span>
+      <button class="modal-close" id="modal-close">✕</button>
+    </div>
+
+    <div class="form-row">
+      <label class="form-label">Тип</label>
+      <select class="form-select" id="form-type">
+        <option value="lesson">Урок</option>
+        <option value="practice">Практика</option>
+      </select>
+    </div>
+
+    <div class="form-row">
+      <label class="form-label">Заголовок</label>
+      <input type="text" class="form-input" id="form-title" placeholder="Например: Урок 3 — Постановка целей">
+    </div>
+
+    <div class="form-row">
+      <label class="form-label">Содержание</label>
+      <textarea class="form-textarea" id="form-content" placeholder="Заметки, конспект, описание практики..."></textarea>
+    </div>
+
+    <div class="form-row">
+      <label class="form-label">Теги <span style="font-weight:500;text-transform:none;letter-spacing:0">(через запятую)</span></label>
+      <input type="text" class="form-input" id="form-tags" placeholder="наставничество, цели, рефлексия">
+      <div class="form-hint">Теги помогают фильтровать материалы</div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-secondary" id="modal-cancel">Отмена</button>
+      <button class="btn-save" id="modal-save">Сохранить</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── CONFIG ──
+// Смени пароль: в консоли браузера выполни
+//   await hashPassword('новый_пароль')
+// и замени значение PASSWORD_HASH ниже
+const PASSWORD_HASH = 'ef92b778bafe771207889657c6f0f9aa9b4bf2da17cdfa25a80b6cce56a9abb1'; // admin123
+
+const STORAGE_KEY = 'learning_platform_v1';
+const SESSION_KEY = 'learning_platform_session';
+
+// ── UTILS ──
+async function hashPassword(password) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(password));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+function genId() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+}
+
+function formatDate(iso) {
+  const d = new Date(iso);
+  return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+// ── STORAGE ──
+function loadItems() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+  catch { return []; }
+}
+
+function saveItems(items) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+}
+
+// ── STATE ──
+let items = loadItems();
+let activeTab = 'all';
+let searchQuery = '';
+let editingId = null;
+
+// ── AUTH ──
+function isLoggedIn() {
+  return sessionStorage.getItem(SESSION_KEY) === 'ok';
+}
+
+async function tryLogin() {
+  const pw = document.getElementById('password-input').value;
+  const err = document.getElementById('login-error');
+  const btn = document.getElementById('login-btn');
+
+  if (!pw) { err.textContent = 'Введите пароль'; return; }
+
+  btn.disabled = true;
+  btn.textContent = 'Проверяю...';
+
+  const hash = await hashPassword(pw);
+
+  if (hash === PASSWORD_HASH) {
+    sessionStorage.setItem(SESSION_KEY, 'ok');
+    showPlatform();
+  } else {
+    err.textContent = 'Неверный пароль';
+    btn.disabled = false;
+    btn.textContent = 'Войти';
+    document.getElementById('password-input').value = '';
+    document.getElementById('password-input').focus();
+  }
+}
+
+function logout() {
+  sessionStorage.removeItem(SESSION_KEY);
+  showLogin();
+}
+
+function showLogin() {
+  document.getElementById('platform-screen').style.display = 'none';
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('password-input').focus();
+}
+
+function showPlatform() {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('platform-screen').style.display = 'block';
+  renderAll();
+}
+
+// ── RENDER ──
+function getFiltered() {
+  return items.filter(item => {
+    const matchTab = activeTab === 'all' || item.type === activeTab;
+    if (!matchTab) return false;
+    if (!searchQuery) return true;
+    const q = searchQuery.toLowerCase();
+    return item.title.toLowerCase().includes(q) ||
+           (item.tags || []).some(t => t.toLowerCase().includes(q)) ||
+           (item.content || '').toLowerCase().includes(q);
+  });
+}
+
+function renderAll() {
+  updateCounts();
+  renderCards();
+}
+
+function updateCounts() {
+  document.getElementById('count-all').textContent = items.length;
+  document.getElementById('count-lesson').textContent = items.filter(i => i.type === 'lesson').length;
+  document.getElementById('count-practice').textContent = items.filter(i => i.type === 'practice').length;
+}
+
+function renderCards() {
+  const list = document.getElementById('cards-list');
+  const filtered = getFiltered();
+
+  if (filtered.length === 0) {
+    list.innerHTML = `
+      <div class="empty">
+        <div class="empty-icon">${searchQuery ? '🔍' : (activeTab === 'lesson' ? '📖' : activeTab === 'practice' ? '✍️' : '📋')}</div>
+        <h3>${searchQuery ? 'Ничего не найдено' : 'Пока нет материалов'}</h3>
+        <p>${searchQuery ? 'Попробуй другой запрос' : 'Нажми «+ Добавить», чтобы создать первый'}</p>
+      </div>`;
+    return;
+  }
+
+  // Sort: newest first
+  const sorted = [...filtered].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+  list.innerHTML = sorted.map(item => {
+    const badge = item.type === 'lesson'
+      ? '<span class="card-type-badge badge-lesson">Урок</span>'
+      : '<span class="card-type-badge badge-practice">Практика</span>';
+
+    const tags = (item.tags || []).length > 0
+      ? `<div class="card-tags">${item.tags.map(t => `<span class="tag">${escHtml(t)}</span>`).join('')}</div>`
+      : '';
+
+    const content = item.content
+      ? `<div class="card-body">
+           <div class="card-content">${escHtml(item.content)}</div>
+           <div class="card-actions">
+             <button class="btn-sm btn-edit" onclick="openEdit('${item.id}')">Редактировать</button>
+             <button class="btn-sm btn-delete" onclick="deleteItem('${item.id}')">Удалить</button>
+           </div>
+         </div>`
+      : `<div class="card-body">
+           <div class="card-actions">
+             <button class="btn-sm btn-edit" onclick="openEdit('${item.id}')">Редактировать</button>
+             <button class="btn-sm btn-delete" onclick="deleteItem('${item.id}')">Удалить</button>
+           </div>
+         </div>`;
+
+    return `
+      <div class="card" id="card-${item.id}" onclick="toggleCard('${item.id}')">
+        <div class="card-header">
+          ${badge}
+          <div class="card-meta">
+            <div class="card-title">${escHtml(item.title)}</div>
+            <div class="card-date">${formatDate(item.createdAt)}</div>
+            ${tags}
+          </div>
+          <span class="card-toggle">▼</span>
+        </div>
+        ${content}
+      </div>`;
+  }).join('');
+}
+
+function escHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function toggleCard(id) {
+  const card = document.getElementById('card-' + id);
+  // Don't toggle if clicked on a button inside
+  card.classList.toggle('expanded');
+}
+
+// ── CRUD ──
+function openAdd() {
+  editingId = null;
+  document.getElementById('modal-title').textContent = 'Новый материал';
+  document.getElementById('form-type').value = 'lesson';
+  document.getElementById('form-title').value = '';
+  document.getElementById('form-content').value = '';
+  document.getElementById('form-tags').value = '';
+  openModal();
+}
+
+function openEdit(id) {
+  event.stopPropagation();
+  const item = items.find(i => i.id === id);
+  if (!item) return;
+  editingId = id;
+  document.getElementById('modal-title').textContent = 'Редактировать';
+  document.getElementById('form-type').value = item.type;
+  document.getElementById('form-title').value = item.title;
+  document.getElementById('form-content').value = item.content || '';
+  document.getElementById('form-tags').value = (item.tags || []).join(', ');
+  openModal();
+}
+
+function deleteItem(id) {
+  event.stopPropagation();
+  if (!confirm('Удалить этот материал?')) return;
+  items = items.filter(i => i.id !== id);
+  saveItems(items);
+  renderAll();
+}
+
+function saveItem() {
+  const title = document.getElementById('form-title').value.trim();
+  if (!title) {
+    document.getElementById('form-title').focus();
+    document.getElementById('form-title').style.borderColor = 'var(--danger)';
+    return;
+  }
+  document.getElementById('form-title').style.borderColor = '';
+
+  const tagsRaw = document.getElementById('form-tags').value;
+  const tags = tagsRaw.split(',').map(t => t.trim()).filter(Boolean);
+
+  if (editingId) {
+    const idx = items.findIndex(i => i.id === editingId);
+    if (idx !== -1) {
+      items[idx] = {
+        ...items[idx],
+        type: document.getElementById('form-type').value,
+        title,
+        content: document.getElementById('form-content').value.trim(),
+        tags,
+        updatedAt: new Date().toISOString(),
+      };
+    }
+  } else {
+    items.push({
+      id: genId(),
+      type: document.getElementById('form-type').value,
+      title,
+      content: document.getElementById('form-content').value.trim(),
+      tags,
+      createdAt: new Date().toISOString(),
+    });
+  }
+
+  saveItems(items);
+  closeModal();
+  renderAll();
+}
+
+// ── MODAL ──
+function openModal() {
+  document.getElementById('modal').classList.add('open');
+  setTimeout(() => document.getElementById('form-title').focus(), 50);
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  editingId = null;
+}
+
+// ── EVENTS ──
+document.addEventListener('DOMContentLoaded', () => {
+  // Auth
+  if (isLoggedIn()) {
+    showPlatform();
+  } else {
+    showLogin();
+  }
+
+  // Login
+  document.getElementById('login-btn').addEventListener('click', tryLogin);
+  document.getElementById('password-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') tryLogin();
+  });
+
+  // Platform
+  document.getElementById('logout-btn').addEventListener('click', logout);
+  document.getElementById('add-btn').addEventListener('click', openAdd);
+
+  // Tabs
+  document.querySelectorAll('.tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeTab = btn.dataset.tab;
+      renderCards();
+    });
+  });
+
+  // Search
+  document.getElementById('search-input').addEventListener('input', e => {
+    searchQuery = e.target.value.trim();
+    renderCards();
+  });
+
+  // Modal
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  document.getElementById('modal-cancel').addEventListener('click', closeModal);
+  document.getElementById('modal-save').addEventListener('click', saveItem);
+  document.getElementById('modal').addEventListener('click', e => {
+    if (e.target === document.getElementById('modal')) closeModal();
+  });
+
+  // Esc closes modal
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+});
+</script>
+</body>
+</html>
